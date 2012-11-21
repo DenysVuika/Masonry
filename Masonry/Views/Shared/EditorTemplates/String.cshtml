@@ -1,0 +1,5 @@
+﻿@* http://stackoverflow.com/questions/5824124/html5-placeholders-with-net-mvc-3-razor-editorfor-extension/6578465#6578465 *@
+@{
+  ViewData["placeholder"] = ViewData.ModelMetadata.Watermark;
+}
+@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, ViewData)

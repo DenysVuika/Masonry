@@ -1,0 +1,48 @@
+﻿@model Masonry.Models.PeopleModel
+@{
+  ViewBag.Title = "People";
+}
+
+<h3>
+  <i class="icon-user"></i>
+  People
+</h3>
+
+@{ Html.RenderPartial("_ProfileListPartial", Model); }
+
+<script type="text/javascript">
+  // smooth infinite scrolling
+  // (downloads additional posts as soon as user scrolls to bottom)
+  
+  var page = 0;
+  var _inCallback = false;
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+      loadMoreEntries();
+    }
+  });
+
+  function loadMoreEntries() {
+    if (page > -1 && !_inCallback) {
+      _inCallback = true;
+      page++;
+      $("#page-data-loading").html('<img src="@Url.Content("~/Content/images/facebook-loading.gif")"/>');
+      $.get($.resolvePath("/People?page=" + page), onAdditionalEntriesLoaded, "json");
+    }
+  }
+
+  function onAdditionalEntriesLoaded(data) {
+    $("#page-data-loading").empty();
+    // check whether any posts are loaded
+    if (data.Profiles.length > 0) {
+      onPeopleDataLoaded(data);
+    }
+      // otherwise stop further attempts loading data as we reached the end
+    else {
+      page = -1;
+    }
+
+    _inCallback = false;
+  }
+</script>

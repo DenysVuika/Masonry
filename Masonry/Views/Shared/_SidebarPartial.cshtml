@@ -1,0 +1,97 @@
+﻿@using Masonry.Composition.Verbs;
+
+<div class="well sidebar-nav">
+  
+  <ul class="nav nav-list" id="sidebar">
+    
+    @*<li>
+      <span>
+        <a href="@Url.Action("Index", "Timeline", new { area = "", uid = User.Identity.Name })" style="text-decoration: none">
+          <img src="@Url.Action("PictureSmall", "Profile", new { area = "" })" alt="@User.Identity.Name" class="profile-picture-small"/>
+        </a>
+        <a href="@Url.Action("Index", "Timeline", new { area = "", uid = User.Identity.Name })" style="padding-left: 5px;"><strong>@User.Identity.GetDisplayName()</strong></a>
+      </span>
+    </li>
+    <li class="divider"></li>*@
+    
+
+    <li class="nav-header">Main</li>
+    <li id="timeline_index">
+      <a href="@Url.Action("Index", "Timeline", new { area = "" })">
+        <i class="icon-list"></i>&nbsp;Timeline
+      </a>
+    </li>
+    <li id="timeline_mentions">
+      <a href="@Url.Action("Mentions", "Timeline", new { area = "" })">
+        <i class="icon-globe"></i>&nbsp;Mentions
+      </a>
+    </li>
+    <li class="disabled"><a href="#"><i class="icon-calendar"></i>&nbsp;Archive</a></li>
+    <li class="disabled"><a href="#"><i class="icon-star"></i>&nbsp;Favorites</a></li>
+    <li class="disabled"><a href="#"><i class="icon-tasks"></i>&nbsp;Tasks</a></li>
+    
+    <li id="search_index">
+      <a href="@Url.Action("Index", "Search", new { area = "" })">
+        <i class="icon-search"></i>&nbsp;Search
+      </a>
+    </li>
+  
+    <li class="nav-header">Lists</li>
+    
+    @if (ViewBag.NavigationPath == "timeline_feed" && !string.IsNullOrWhiteSpace(ViewBag.NavigationFeed))
+    {
+      <li id="@ViewBag.NavigationPath">
+        <a href="@Url.Action("Feed", "Timeline", new { area = "", uid = ViewBag.NavigationFeed })">
+          <i class="icon-comment"></i>&nbsp;@@@ViewBag.NavigationFeed
+        </a>
+      </li>
+    }
+
+    <li class="disabled"><a href="#"><i class="icon-filter"></i>&nbsp;Today</a></li>
+    <li class="disabled"><a href="#"><i class="icon-filter"></i>&nbsp;Last Week</a></li>
+
+    @foreach (var verb in Masonry.GetSidebarActions())
+    {
+      <li id="@verb.GetSidebarId()">
+        <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
+          <i class="icon-list-alt"></i>&nbsp;@verb.Name
+          @if (verb.Notifications > 0)
+          {
+            <span class="badge  pull-right">@verb.Notifications</span>
+          }
+        </a>
+      </li>
+    }
+    
+    <li class="nav-header">Connect</li>
+    @*<li class="disabled">
+      <a href="#">
+        <i class="icon-envelope"></i>&nbsp;Messages
+        <span class="badge badge-important pull-right">1</span>
+      </a>
+      
+    </li>*@
+    <li id="people_index">
+      <a href="@Url.Action("Index", "People", new { area = "" })">
+        <i class="icon-user"></i>&nbsp;People
+      </a>
+    </li>
+    @*<li class="disabled"><a href="#"><i class="icon-plus-sign"></i>&nbsp;Invite Friends</a></li>*@
+    
+    <li class="divider"></li>
+    <li id="help_index">
+      <a href="@Url.Action("Index", "Help", new { area = "" })">
+        <i class="icon-flag"></i>&nbsp;Help
+      </a>
+    </li>
+  </ul>
+</div>
+<!--/.well -->
+
+<script type="text/javascript">
+  
+  $(document).ready(function () {
+    updateSidebarSelection('@ViewBag.NavigationPath');
+  });
+  
+</script>

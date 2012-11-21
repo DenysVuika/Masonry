@@ -1,0 +1,73 @@
+﻿@using Recaptcha
+@model Masonry.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Create a New Account</h2>
+<p>Use the form below to create a new account.</p>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
+  <fieldset>
+    <legend>Account Information</legend>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Account)
+      </div>
+      <div class="controls">
+        @Html.EditorFor(m => m.Account, new { @class = "required" })
+        @Html.ValidationMessageFor(m => m.Account)
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Name)
+      </div>
+      <div class="controls">
+        @Html.EditorFor(m => m.Name, new { @class = "required" })
+        @Html.ValidationMessageFor(m => m.Name)
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Email)
+      </div>
+      <div class="controls">
+        @Html.EditorFor(m => m.Email, new { @class = "required email" })
+        @Html.ValidationMessageFor(m => m.Email)
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Password)
+      </div>
+      <div class="controls">
+        @Html.PasswordFor(m => m.Password, new { @class = "required" })
+        @Html.ValidationMessageFor(m => m.Password)
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.ConfirmPassword)
+      </div>
+      <div class="controls">
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "required" })
+        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        @Html.Raw(Html.GenerateCaptcha())
+      </div>
+    </div>
+    <div class="form-actions">
+      <input type="submit" value="Register" class="btn btn-primary" />
+    </div>
+  </fieldset>
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>

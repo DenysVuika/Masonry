@@ -1,0 +1,87 @@
+﻿@model Masonry.Models.TimelineModel
+@{
+    ViewBag.Title = "Personal Feed";
+}
+
+<h3>
+  <i class="icon-comment"></i>&nbsp;@Model.Name
+</h3>
+
+@if (Model.Posts == null || !Model.Posts.Any())
+{
+  <p class="lead">No posts found...</p>
+}
+else
+{
+  Html.RenderPartial("_TimelineTemplatesPartial");
+  
+  <!-- timeline -->
+  <div class="m-stream-container" style="display: none;" data-bind="template: { name: 'timeline-template' }"></div>
+
+  <!-- Loading progress indicator -->
+  <div style="text-align: center;" id="page-data-loading"></div>
+
+  <script type="text/javascript">
+    var initialData = { Posts: @Html.Raw(Json.Encode(Model.Posts)) };
+
+    $(document).ready(function() {
+      if (initialData) {
+        onFeedDataLoaded(initialData, '@Model.Account');
+      }
+      else {
+        onFeedDataLoaded({ Posts: [] }, '@Model.Account');
+      }
+    });
+
+    function onFeedDataLoaded(data, account) {
+      if (!window.timelineFeed) {
+        window.timelineFeed = new FeedViewModel(account, data);
+        ko.applyBindings(window.timelineFeed);
+      }
+      else {
+        window.timelineFeed.appendPosts($(data.Posts));
+      }
+
+      enableAccountTooltips();
+      enableAccountPopups();
+      enableCommentExpanders();
+      $(".m-stream-container").show();
+    }
+
+    // smooth infinite scrolling
+    // (downloads additional posts as soon as user scrolls to bottom)
+
+    var page = 0;
+    var _inCallback = false;
+
+    $(window).scroll(function() {
+      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        loadMorePosts();
+      }
+    });
+
+    function loadMorePosts() {
+      if (page > -1 && !_inCallback) {
+        var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
+        _inCallback = true;
+        page++;
+        $("#page-data-loading").html('<img src="@Url.Content("~/Content/images/facebook-loading.gif")"/>');
+        $.get($.resolvePath("/Timeline/Feed?uid=" + '@Model.Account' + "&top=" + bottomPostId), onAdditionalPostsLoaded, "json");
+      }
+    }
+
+    function onAdditionalPostsLoaded(data) {
+      $("#page-data-loading").empty();
+      // check whether any posts are loaded
+      if (data.Posts.length > 0) {
+        onFeedDataLoaded(data);
+      }
+        // otherwise stop further attempts loading data as we reached the end
+      else {
+        page = -1;
+      }
+
+      _inCallback = false;
+    }
+  </script>
+}

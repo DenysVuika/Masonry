@@ -1,0 +1,9 @@
+﻿<script type="text/javascript">
+  // Fix for resolving relative paths from within js scripts
+  $.resolvePath = function(url)
+  {
+    var path = '@Request.ApplicationPath';
+    if (path != '/') return path + url;
+    return url;
+  };
+ </script>

@@ -1,0 +1,48 @@
+﻿@using Masonry.Controllers
+<ul class="nav pull-right">
+  <li class="divider-vertical" style="margin-right: 0px;"></li>
+  @if (Request.IsAuthenticated)
+  {
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-bottom: 5px">
+        <img src="~/Content/images/icon-settings.png" style="margin: 0; padding: 0; max-height: 24px; max-width: 24px" alt=""/>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="@Url.Action("Index", "Account", new { area = "" })">
+            <img src="@Url.Action("PictureTiny", "Account", new { area = "", uid = User.Identity.Name })" alt="@User.Identity.Name" class="profile-picture-tiny"/>
+            &nbsp;@User.Identity.GetDisplayName()
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="@Url.Action("Index", "Help", new { area = "" })">Help</a>
+          <a href="@Url.Action("About", "Home", new { area = "" })">About</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="@Url.Action("Logout", "Account", new { area = ""})">Sign out</a>
+        </li>
+      </ul>
+    </li>
+    <li class="divider-vertical" style="margin: 0px;"></li>
+  }
+  else
+  {
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Guest
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          @Html.ActionLink("Sign In", "Login", "Account", new { area = "" }, null)
+        </li>
+        <li>
+          @Html.ActionLink("Register", "Register", "Account", new { area = "" }, null)
+        </li>
+      </ul>
+    </li>
+  }
+</ul>

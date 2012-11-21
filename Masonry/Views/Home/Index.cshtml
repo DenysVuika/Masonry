@@ -1,0 +1,114 @@
+﻿@{
+  ViewBag.Title = "Masonry";
+  ViewBag.Message = "Bootstrap Standard Layout";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+  
+  body {
+    position: relative;
+    padding-bottom: 40px;
+    background-color: #fff;
+    background-image: url("@Url.Content("~/content/images/grid-18px-masked.png")");
+    background-repeat: repeat-x;
+    background-position: 0 40px;
+  }
+
+  .jumbotron {
+    position: relative;
+  }
+
+  .jumbotron h1 {
+    margin-bottom: 9px;
+    font-size: 81px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .jumbotron p {
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  .jumbotron .btn-large {
+    font-size: 20px;
+    font-weight: normal;
+    padding: 14px 24px;
+    margin-right: 10px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+
+  .jumbotron .btn-large small {
+    font-size: 14px;
+  }
+
+  .masthead {
+    padding-top: 36px;
+    margin-bottom: 72px;
+  }
+
+  .masthead h1,
+  .masthead p {
+    text-align: center;
+  }
+
+  .masthead p {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+</style>
+
+<a href="https://github.com/DenisVuyka/Masonry" class="visible-desktop">
+  <img style="position: absolute; top: 40px; right: 0; border: 0;" src="~/Content/images/forkme_right_orange.png" alt="Fork me on GitHub">
+</a>
+
+<header class="jumbotron masthead">
+  <div>
+    <h1>Masonry<small style="vertical-align: top">beta</small></h1>
+    <p>Starter kit for modern, extensible and social-enabled web applications.</p>
+  </div>
+  <p>
+    @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("Sign In", "Login", "Account", new { area = "" }, new { @class = "btn btn-success btn-large" })
+  </p>
+</header>
+
+<hr/>
+
+<!-- Example row of columns -->
+<div class="row-fluid">
+  <div class="span4">
+    <h2>Open</h2>
+    <p>
+      Built by <a href="https://twitter.com/DenisVuyka">@@denisvuyka</a> with 
+      <a href="http://www.asp.net/mvc">ASP.NET MVC4</a>, 
+      Masonry utilizes <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, 
+      <a href="http://knockoutjs.com/">KnockoutJs</a>, 
+      <a href="http://mef.codeplex.com/">Managed Extensibility Framework (MEF)</a>, 
+      <a href="http://entityframework.codeplex.com/">EF5</a> and managed through the 
+      <a href="https://github.com/DenisVuyka/Masonry">GitHub</a>.
+    </p>
+  </div>
+  <div class="span4">
+    <h2>Simple</h2>
+    <p>Masonry is the building of MVC web structures, from individual great ideas, 
+      laid in and bound together for the purposes of simplicity, getting started quicker
+      and continuing with the leverage of some great web platforms that are only going to get better.
+    </p>
+  </div>
+  <div class="span4">
+    <h2>Extensible</h2>
+    <p>
+      Masonry implementation takes into consideration future growth, flexibility, maintainability and testability of your applications.
+      It brings the benefits of a loosely-coupled plugin-like architecture and supports single-assembly extensions built with the same
+      ASP.NET MVC4 framework as the main application.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model Masonry.Models.PeopleModel
+
+<p class="lead" style="display: none" data-bind="visible: profiles().length == 0">No people found...</p>
+
+<ul data-bind="visible: profiles().length > 0, foreach: profiles" class="media-list">
+  <li class="media" style="border-top: solid 1px lightgrey; padding-top: 15px;">
+    <div class="pull-left" style="margin-right: 10px;">
+      <img class="media-object picture-48" data-bind="attr: { src: picture }" alt="" />
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <span>
+          <a data-bind="attr: { href: feed }"><strong data-bind="text: name"></strong></a>
+          <a data-bind="text: '@@' + account, attr: { href: feed }" style="color: grey; font-weight: normal; font-size: 90%"></a>
+        </span>
+        
+        <a class="btn pull-right" data-bind="visible: !isFollowed && !isOwnProfile, attr: { href: followAction }">Follow</a>
+        <a class="btn btn-danger pull-right" data-bind="visible: isFollowed && !isOwnProfile, attr: { href: unfollowAction }">Unfollow</a>
+        <a class="btn btn-success pull-right" data-bind="visible: isOwnProfile" href="@Url.Action("Index", "Account", new { area = "" })">Edit profile</a>
+        
+      </h4>
+      
+      <em data-bind="text: bio"></em>
+      <p>
+        <a data-bind="attr: { href: website }, text: website"></a>
+      </p>
+
+      <ul class="profile-stats-list">
+        <li class="profile-stats">
+          <a data-bind="attr: { href: feed }">
+            <strong data-bind="text: posts"></strong>&nbsp;Posts
+          </a>
+        </li>
+        <li class="profile-stats">
+          <a data-bind="attr: { href: followingUrl }"><strong data-bind="text: following"></strong>&nbsp;Following</a>
+        </li>
+        <li class="profile-stats">
+          <a data-bind="attr: { href: followersUrl }"><strong data-bind="text: followers"></strong>&nbsp;Followers</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<!-- Loading progress indicator -->
+<div style="text-align: center;" id="page-data-loading"></div>
+
+<script type="text/javascript">
+
+  var initialData;
+  
+   @if (Model.Profiles != null && Model.Profiles.Any())
+   {
+     @: initialData = { Profiles: @Html.Raw(Json.Encode(Model.Profiles)) };
+   }
+
+  $(document).ready(function () {
+    if (initialData) {
+      onPeopleDataLoaded(initialData);
+    }
+    else {
+      onPeopleDataLoaded({ Profiles: [] });
+    }
+  });
+</script>

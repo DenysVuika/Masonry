@@ -1,0 +1,163 @@
+﻿@model Masonry.Models.AccountSettingsModel
+@{
+  ViewBag.Title = "Account Settings";
+  Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<style type="text/css">
+    .form-horizontal .control-group {
+        margin-bottom: 10px;
+    }
+
+    .controls-hint {
+        color: #999;
+    }
+
+    .bio-counter {
+        width: 530px;
+    }
+
+    .bio-counter-label {
+        color: #999;
+        float: right;
+        font-weight: bold;
+    }
+</style>
+
+<h3>
+  <i class="icon-user"></i>&nbsp;Account Settings
+</h3>
+
+<div id="browserWarning" class="alert alert-block" style="display: none">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Warning!</h4>
+  Your current browser supports HTML5 File Api only partially. Profile picture preview will be disabled.
+</div>
+
+@if (TempData.ContainsKey("Notification"))
+{
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    @TempData["Notification"]
+  </div>
+}
+
+@using (Html.BeginForm("AccountSettings", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary(true, "Account update was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
+  <div>
+    
+    <hr/>
+
+    <div class="control-group">
+      <div class="control-label">Photo</div>
+      <div class="controls">
+        <div>
+          <img class="picture-128" src="@Url.Action("Picture", "Account", new { area = "", uid = Model.Account })" alt="Photo" />
+          <img id="previewer" class="picture-128" alt="" style="display: none"/>
+        </div>
+        <div>
+          <input type="file" name="picture" id="picture" onchange="preview(this)"/>
+        </div>
+      </div>
+    </div>
+    
+    <hr/>
+
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Name)
+      </div>
+      <div class="controls">
+        @Html.EditorFor(m => m.Name)
+        <p>@Html.ValidationMessageFor(m => m.Name)</p>
+        <p class="controls-hint">Enter your real name, so people you know can recognize you.</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Location)
+      </div>
+      <div class="controls">
+        @Html.EditorFor(m => m.Location)
+        <p>@Html.ValidationMessageFor(m => m.Location)</p>
+        <p class="controls-hint">Where in the world are you?</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Website)
+      </div>
+      <div class="controls">
+        @Html.EditorFor(m => m.Website)
+        <p>@Html.ValidationMessageFor(m => m.Website)</p>
+        <p class="controls-hint">Have a homepage or a blog? Put the address here.</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="control-label">
+        @Html.LabelFor(m => m.Bio)
+      </div>
+      <div class="controls">
+        @Html.TextAreaFor(m => m.Bio, new { id = "bio_editor", rows = 3, @class="input-xxlarge", @style="resize:vertical" })
+        <p>@Html.ValidationMessageFor(m => m.Bio)</p>
+        <p class="controls-hint bio-counter">
+          About yourself in <strong>160</strong> characters or less.
+          <span id="bio_counter" class="bio-counter-label">160</span>
+        </p>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-actions" style="background-color: white; border-top: none;">
+      <input id="submit" type="submit" value="Save changes" class="btn btn-primary" />
+      <a href="@Url.Action("Index", "Timeline", new { area = "" })" style="padding-left: 10px;">Cancel</a>
+    </div>
+  </div>
+}
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    if (!window.FileReader) {
+      $('#browserWarning').css('display', '');
+    }
+
+    $("#bio_editor").countdown({
+      limit: 160,
+      init: function (counter) {
+        $("#bio_counter").css("color", "#999").text(counter);
+      },
+      plus: function (counter) {
+        $("#bio_counter").css("color", "#999").text(counter);
+        $("#submit").removeAttr("disabled");
+      },
+      minus: function (counter) {
+        $("#bio_counter").css("color", "red").text(counter);
+        $("#submit").attr("disabled", "disabled");
+      }
+    });
+  });
+
+  function preview(input)
+  {
+    if (!!window.FileReader && input.files && input.files[0])
+    {
+      $("#previewer").css('display', 'inline');
+      var reader = new window.FileReader();
+
+      reader.onload = function(e)
+      {
+        $('#previewer')
+          .attr('src', e.target.result)
+          .width(128)
+          .height(128);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>

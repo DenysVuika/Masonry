@@ -1,0 +1,24 @@
+﻿@model string
+@{
+    ViewBag.Title = "Help";
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.HelpPage != null)
+{
+  <ul class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Help", new { area = "" })">Help</a>
+      <span class="divider">/</span>
+    </li>
+    <li class="active">@ViewBag.HelpPage</li>
+  </ul>
+}
+
+<div>
+  @Html.Raw(Model)
+</div>

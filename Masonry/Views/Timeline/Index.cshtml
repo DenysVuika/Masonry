@@ -1,0 +1,188 @@
+﻿@model Masonry.Models.TimelineModel
+@{
+    ViewBag.Title = "Timeline";
+}
+
+@{ Html.RenderPartial("_TimelineTemplatesPartial"); }
+
+<h3>
+  <i class="icon-list"></i>&nbsp;Timeline
+</h3>
+
+@using (Ajax.BeginForm("UpdateStatus", "Timeline", new { area = "" }, new AjaxOptions { OnSuccess = "onStatusUpdatedInline" }))
+{
+  <textarea id="new-post-dialog-inline" name="content" rows="3" placeholder="What's on your mind?" class="input-block-level" style="resize: vertical; max-height: 300px"></textarea>
+  <div style="padding-bottom: 20px;">
+    <input type="submit" class="btn btn-success pull-right" value="Post" />
+  </div>
+}
+  
+<p id="msg-no-posts" class="lead" style="display: none">No posts found...</p>
+
+
+<div id="msg-new-posts" class="alert alert-info" style="text-align: center; display: none">
+  <a id="new-msg-link" href="#">
+    You got <span id="new-msg-counter"></span> new posts for your timeline.
+  </a>
+</div>
+
+
+<!-- timeline -->
+<div class="m-stream-container" style="display: none;" data-bind="template: { name: 'timeline-template' }"></div>
+
+<!-- Loading progress indicator -->
+<div style="text-align: center;" id="page-data-loading"></div>
+
+<script type="text/javascript">
+  
+  function onStatusUpdatedInline(data, status, response) {
+    // TODO: error checks
+    $("#new-post-dialog-inline").val("");
+    // Raise status updated event to notify external components
+    $(document).trigger("masonry.onStatusUpdated", data);
+  }
+  
+  $(document).bind("masonry.onStatusUpdated", function(event, data) {
+    var feed = window.timelineFeed;
+    if (data && feed && data.Account == feed.account) {
+      window.timelineFeed.addNewPost(data);
+      
+      toggleNoPostsMessage();
+      // TODO: temp
+      enableAccountPopups();
+      enableAccountTooltips();
+    }
+  });
+
+  $(document).bind("masonry.onPostRemoved", function(event, data) {
+    toggleNoPostsMessage();
+  });
+ 
+  var initialData;
+  
+  @if (Model.Posts != null && Model.Posts.Any())
+   {
+     @: initialData = { Posts: @Html.Raw(Json.Encode(Model.Posts)) };
+   }
+
+  $(document).ready(function () {
+    if (initialData) {
+      onFeedDataLoaded(initialData, '@Model.Account');
+    }
+    else {
+      onFeedDataLoaded({ Posts: [] }, '@Model.Account');
+      toggleNoPostsMessage();
+    }
+  });
+
+  function toggleNoPostsMessage() {
+    var feed = window.timelineFeed;
+    if (feed && feed.posts() && feed.posts().length > 0) {
+      $("#msg-no-posts").hide();
+    }
+    else {
+      $("#msg-no-posts").show();
+    }
+  }
+
+  function onFeedDataLoaded(data, account) {
+    if (!window.timelineFeed) {
+      window.timelineFeed = new FeedViewModel(account, data);
+      ko.applyBindings(window.timelineFeed);
+    }
+    else {
+      window.timelineFeed.appendPosts($(data.Posts));
+    }
+    
+    enableAccountTooltips();
+    enableAccountPopups();
+    enableCommentExpanders();
+    $(".m-stream-container").show();
+
+    checkNewPosts();
+  }
+  
+  // update polling
+
+  var updateChecker;
+
+  function checkNewPosts() {
+    clearTimeout(updateChecker);
+    updateChecker = setTimeout(function() {
+      var topId = Math.max.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
+      $.get($.resolvePath("/Timeline/CheckUpdates?top=" + topId), function(data) {
+        if (data && data > 0) {
+          $("#new-msg-counter").text(data);
+          $("#msg-new-posts").show();
+        }
+        else {
+          $("#msg-new-posts").hide();
+        }
+      }, "json")
+        .always(function() {
+          checkNewPosts();
+        });
+    }, 60000); // once per minute
+  }
+  
+  // Clicking to download new posts
+  $("#new-msg-link").live("click", function(e) {
+    e.preventDefault();
+    $("#msg-new-posts").hide();
+    clearTimeout(updateChecker);
+    var topId = Math.max.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
+    $.get($.resolvePath("/Timeline/Updates?top=" + topId), function(data) {
+      onUpdatesLoaded(data);
+    }, "json")
+      .always(function() {
+        checkNewPosts();
+      });
+  });
+  
+  function onUpdatesLoaded(data) {
+    if (data && window.timelineFeed) {
+      $(data).each(function(index, post) {
+        window.timelineFeed.addNewPost(post);
+      });
+      // TODO: temp
+      enableAccountPopups();
+    }
+  }
+
+  // smooth infinite scrolling
+  // (downloads additional posts as soon as user scrolls to bottom)
+
+  var page = 0;
+  var _inCallback = false;
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+      loadMorePosts();
+    }
+  });
+  
+  function loadMorePosts() {
+    if (page > -1 && !_inCallback) {
+      var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
+      _inCallback = true;
+      page++;
+      $("#page-data-loading").html('<img src="@Url.Content("~/Content/images/facebook-loading.gif")"/>');
+      $.get($.resolvePath("/Timeline?top=" + bottomPostId), onAdditionalPostsLoaded, "json");
+    }
+  }
+  
+  function onAdditionalPostsLoaded(data) {
+    $("#page-data-loading").empty();
+    // check whether any posts are loaded
+    if (data.Posts.length > 0) {
+      onFeedDataLoaded(data);
+    }
+      // otherwise stop further attempts loading data as we reached the end
+    else {
+      page = -1;
+    }
+
+    _inCallback = false;
+  }
+
+</script>

@@ -1,0 +1,38 @@
+﻿@model Masonry.Models.PostModel
+@{
+    ViewBag.Title = "Post";
+}
+
+@{ Html.RenderPartial("_TimelineTemplatesPartial"); }
+
+<h3>
+  <i class="icon-file"></i>&nbsp;@Model.Name
+</h3>
+
+<!-- timeline -->
+<div class="m-stream-container" style="display: none;" data-bind="template: { name: 'timeline-template' }"></div>
+
+<script type="text/javascript">
+  var initialData;
+  
+  @if (Model != null)
+  {
+    @: initialData = { Posts: [@Html.Raw(Json.Encode(Model)) ]};
+  }
+
+  $(document).ready(function() {
+    if (initialData)
+      onPostLoaded(initialData);
+  });
+  
+  function onPostLoaded(data) {
+    window.viewmodel = new FeedViewModel('@Model.Account', data);
+    ko.applyBindings(window.viewmodel);
+    
+    enableAccountTooltips();
+    enableAccountPopups();
+    $(".m-stream-container").show();
+    $("div[data-link-type='comment']").collapse("show");
+  }
+
+</script>

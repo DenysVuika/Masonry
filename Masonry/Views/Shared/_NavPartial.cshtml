@@ -1,0 +1,40 @@
+﻿@using Masonry.Composition.Verbs;
+
+<ul class="nav" id="navbar">
+  <li class="divider-vertical"></li>
+
+  @foreach(var group in Masonry.GetHeaderActionGroups())
+  {
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        @group.Name
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        @foreach(var verb in group.Verbs)
+        {
+          <li>@Html.ActionLink(verb.Name, verb.Action, verb.Controller, new { area = verb.Area }, null)</li>
+        }
+      </ul>
+    </li>
+  }
+  
+  @foreach (var verb in Masonry.GetHeaderActions())
+  {
+    <li id="@verb.GetNavbarId()">@Html.ActionLink(verb.Name, verb.Action, verb.Controller, new { area = verb.Area }, null)</li>
+  }
+</ul>
+
+<script type="text/javascript">
+    
+    // Controls selection state of navbar items
+  $(document).ready(function() {
+    var toSelect = $('#@ViewBag.NavbarSelection');
+    //$('ul.nav > li').removeClass('active');
+    $('#navbar > li').removeClass('active');
+
+    if (toSelect.length > 0) {
+      toSelect.addClass('active');
+    }
+  });
+</script>

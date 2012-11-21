@@ -1,0 +1,92 @@
+﻿<script type="text/html" id="post-comment-template">
+  <div>
+    <a class="timelineImageContainer">      
+      <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'cprof_' + $index(), 'data-link-value': account , src: picture }"/>
+    </a>
+    <div class="timelineContentBlock" style="padding-bottom: 3px">
+      <blockquote class="post-comment">
+        <p>
+          <a data-bind="attr: { href: feed }">
+            <strong data-bind="text: name"></strong>
+          </a>
+          <span data-bind="html: content"></span>      
+        </p>
+        <small data-bind="text: created.calendar(), attr: { title: created.format('LLLL') }"></small>
+      </blockquote>
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="post-commentbox-template">
+  @using (Ajax.BeginForm("Comment", "Timeline", new { area = "" }, new AjaxOptions { OnSuccess = "onCommentPosted" }))
+  {
+    <input name="PostId" type="hidden" data-bind="value: id"/>
+    <input name="Content" data-bind="attr: { id: 'comment-box-' + id }" type="text" class="input-block-level" placeholder="Write a comment..." autocomplete="off"/>
+  }
+</script>
+
+<script type="text/html" id="view-all-comments-template">
+  <div>
+    <a data-bind="attr: { href: postUrl}">
+      <i class="icon-comment"></i><span data-bind="text: ' View all ' + commentsCount() + ' comments'"></span>
+    </a>
+  </div>
+</script>
+
+<script type="text/html" id="comments-section-template">  
+  <div>
+    <a data-toggle="collapse" data-bind="attr: { 'data-target' : '#comments_' + id }">
+      <i class="icon-comment"></i>&nbsp;Comments
+      <span data-bind="visible: commentsCount() > 0, text: '(' + commentsCount() + ')'"></span>
+    </a>
+  </div>
+  <div data-link-type="comment" class="collapse" data-bind="attr: { id: 'comments_' + id }" style="margin-top: 10px">
+    <!-- comment list -->
+    <div data-bind="visible: comments().length > 0, template: { name: 'post-comment-template', foreach: comments }"></div>
+    <!-- comment box -->
+    <div data-bind="template: { name: 'post-commentbox-template' }"></div>
+  </div>
+</script>
+
+<script type="text/html" id="timeline-template">
+  <ul class="m_stream" data-bind="foreach: posts">
+    <li class="timelineItem allowTopBorder">
+      <!-- Entry content -->
+      <div>        
+        <button class="close" data-bind="visible: canDismiss, click: $parent.removePost">&times;</button>
+        <!-- Profile Picture -->
+        <a class="timelineImageContainer">
+          <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'prof_' + $index(), 'data-link-value': account , src: picture }"/>
+        </a>
+        <div class="timelineContentBlock">
+          <!-- header -->
+          <div class="timelineMessageHeader">
+            <span>              
+              <a data-bind="attr: { href: feed }"><strong data-bind="text: name"></strong></a>
+              <a data-bind="text: '@@' + account, attr: { href: feed }" style="color: grey; font-weight: normal; font-size: 90%"></a>
+            </span>
+          </div>
+          <!-- body -->
+          <blockquote>
+            <p data-bind="html: content"></p>
+            <small data-bind="text: created.calendar(), attr: { title : created.format('LLLL') }"></small>
+          </blockquote>
+          <!-- hash tags -->
+          <div data-bind="visible: hashtags.length > 0">
+            <i class="icon-tags"></i>
+            <span data-bind="foreach: hashtags">
+              <span class="label" data-bind="text: $data"></span>
+            </span>
+          </div>
+          <!-- user comments -->
+          <!-- ko if: openBlank -->
+          <div data-bind="template: { name: 'view-all-comments-template' }"></div>
+          <!-- /ko -->
+          <!-- ko ifnot: openBlank -->
+          <div data-bind="template: { name: 'comments-section-template' }"></div>
+          <!-- /ko -->
+        </div>
+      </div>
+    </li>
+  </ul>
+</script>
