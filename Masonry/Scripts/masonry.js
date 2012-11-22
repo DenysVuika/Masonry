@@ -181,12 +181,12 @@ function FeedViewModel(account, data) {
   };
 
   self.appendPosts = function (posts) {
-    posts.each(function (index, entry) {
+    $(posts).each(function (index, entry) {
       self.addPost(entry);
     });
   };
 
-  self.appendPosts($(data.Posts));
+  self.appendPosts($(data));
 }
 
 function UserProfileViewModel(data) {
@@ -447,7 +447,7 @@ function initTimelineLazyLoading(url, onSuccess) {
           timeout: 5000,
           success: function (data, textStatus) {
             // check whether any posts are loaded
-            if (data.Posts.length > 0) {
+            if (data.length > 0) {
               _page++;
               if (onSuccess && (typeof onSuccess == "function")) {
                 onSuccess(data);

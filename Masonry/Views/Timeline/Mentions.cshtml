@@ -26,15 +26,11 @@ else
   <div id="content-loading-error" class="alert alert-error" style="text-align: center; display: none"></div>
 
   <script type="text/javascript">
-    var initialData = { Posts: @Html.Raw(Json.Encode(Model.Posts)) };
+    var initialData = @Html.Raw(Json.Encode(Model.Posts));
 
     $(document).ready(function() {
-      if (initialData) {
-        onFeedDataLoaded(initialData, '@Model.Account');
-      }
-      else {
-        onFeedDataLoaded({ Posts: [] }, '@Model.Account');
-      }
+      onFeedDataLoaded(initialData, '@Model.Account');
+      initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
     });
 
     function onFeedDataLoaded(data, account) {
@@ -43,7 +39,7 @@ else
         ko.applyBindings(window.timelineFeed);
       }
       else {
-        window.timelineFeed.appendPosts($(data.Posts));
+        window.timelineFeed.appendPosts(data);
       }
 
       enableAccountTooltips();
@@ -59,10 +55,6 @@ else
       var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
       return $.resolvePath("/Timeline/Mentions?top=" + bottomPostId);
     }
-
-    $(document).ready(function() {
-      initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
-    });
 
   </script>
 }

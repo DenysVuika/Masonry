@@ -47,12 +47,7 @@ namespace Masonry.Tests.Controllers
       var result = controller.Index(null) as JsonResult;
       Assert.IsNotNull(result);
       Assert.AreEqual(JsonRequestBehavior.AllowGet, result.JsonRequestBehavior);
-
-      var model = result.Data as TimelineModel;
-      Assert.IsNotNull(model);
-      Assert.AreEqual(user.Account, model.Account);
-      Assert.AreEqual(user.Name, model.Name);
-      Assert.AreEqual(posts, model.Posts);
+      Assert.AreEqual(posts, result.Data);
 
       Repository.Verify(x => x.FindUser(1), Times.Once());
       Repository.Verify(x => x.GetTimelineEntries(1, 0), Times.Once());
@@ -179,13 +174,8 @@ namespace Masonry.Tests.Controllers
       var result = controller.Mentions(null) as JsonResult;
       Assert.IsNotNull(result);
       Assert.AreEqual(JsonRequestBehavior.AllowGet, result.JsonRequestBehavior);
-
-      var model = result.Data as TimelineModel;
-      Assert.IsNotNull(model);
-      Assert.AreEqual(user.Account, model.Account);
-      Assert.AreEqual(user.Name, model.Name);
-      Assert.AreEqual(posts, model.Posts);
-
+      Assert.AreEqual(posts, result.Data);
+      
       Security.Verify(x => x.CurrentUserId, Times.Once());
       Repository.Verify(x => x.FindUser(1), Times.Once());
       Repository.Verify(x => x.GetMentions("johndoe", 0), Times.Once());
@@ -245,12 +235,7 @@ namespace Masonry.Tests.Controllers
       var result = controller.Feed(user.Account, 10) as JsonResult;
       Assert.IsNotNull(result);
       Assert.AreEqual(JsonRequestBehavior.AllowGet, result.JsonRequestBehavior);
-      
-      var model = result.Data as TimelineModel;
-      Assert.IsNotNull(model);
-      Assert.AreEqual(user.Account, model.Account);
-      Assert.AreEqual(user.Name, model.Name);
-      Assert.AreEqual(posts, model.Posts);
+      Assert.AreEqual(posts, result.Data);
 
       Repository.Verify(x => x.FindUser(user.Account), Times.Once());
       Repository.Verify(x => x.GetFeedEntries(1, 10), Times.Once());

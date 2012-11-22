@@ -39,7 +39,7 @@ namespace Masonry.Controllers
       };
 
       if (IsAjaxRequest())
-        return Json(model, JsonRequestBehavior.AllowGet);
+        return Json(model.Posts, JsonRequestBehavior.AllowGet);
       
       return View(model);
     }
@@ -68,7 +68,7 @@ namespace Masonry.Controllers
       };
 
       if (IsAjaxRequest())
-        return Json(model, JsonRequestBehavior.AllowGet);
+        return Json(model.Posts, JsonRequestBehavior.AllowGet);
       
       return View(model);
     }
@@ -85,7 +85,7 @@ namespace Masonry.Controllers
       };
       
       if (IsAjaxRequest())
-        return Json(model, JsonRequestBehavior.AllowGet);
+        return Json(model != null ? model.Posts : new PostModel[0], JsonRequestBehavior.AllowGet);
 
       ViewBag.NavigationFeed = uid;
       return View(model);

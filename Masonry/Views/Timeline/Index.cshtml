@@ -64,18 +64,18 @@
   var initialData;
   
   @if (Model.Posts != null && Model.Posts.Any())
-   {
-     @: initialData = { Posts: @Html.Raw(Json.Encode(Model.Posts)) };
-   }
+  {
+    @: initialData = @Html.Raw(Json.Encode(Model.Posts));
+  }
+  else
+  {
+    @: initialData = [];
+  }
 
   $(document).ready(function () {
-    if (initialData) {
-      onFeedDataLoaded(initialData, '@Model.Account');
-    }
-    else {
-      onFeedDataLoaded({ Posts: [] }, '@Model.Account');
-      toggleNoPostsMessage();
-    }
+    onFeedDataLoaded(initialData, '@Model.Account');
+    toggleNoPostsMessage();
+    initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
   });
 
   function toggleNoPostsMessage() {
@@ -89,12 +89,13 @@
   }
 
   function onFeedDataLoaded(data, account) {
+    if (!data) return;
     if (!window.timelineFeed) {
       window.timelineFeed = new FeedViewModel(account, data);
       ko.applyBindings(window.timelineFeed);
     }
     else {
-      window.timelineFeed.appendPosts($(data.Posts));
+      window.timelineFeed.appendPosts(data);
     }
     
     enableAccountTooltips();
@@ -159,9 +160,4 @@
     var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
     return $.resolvePath("/Timeline?top=" + bottomPostId);
   }
-
-  $(document).ready(function() {
-    initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
-  });
-  
 </script>

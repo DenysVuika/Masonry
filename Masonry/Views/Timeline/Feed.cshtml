@@ -25,24 +25,21 @@ else
   <div id="content-loading-error" class="alert alert-error" style="text-align: center; display: none"></div>
 
   <script type="text/javascript">
-    var initialData = { Posts: @Html.Raw(Json.Encode(Model.Posts)) };
 
-    $(document).ready(function() {
-      if (initialData) {
-        onFeedDataLoaded(initialData, '@Model.Account');
-      }
-      else {
-        onFeedDataLoaded({ Posts: [] }, '@Model.Account');
-      }
-    });
+    var initialData = @Html.Raw(Json.Encode(Model.Posts));
+  
+    $(document).ready(function () {
+      onFeedDataLoaded(initialData, '@Model.Account');
+   });
 
     function onFeedDataLoaded(data, account) {
+      if (!data) return;
       if (!window.timelineFeed) {
         window.timelineFeed = new FeedViewModel(account, data);
         ko.applyBindings(window.timelineFeed);
       }
       else {
-        window.timelineFeed.appendPosts($(data.Posts));
+        window.timelineFeed.appendPosts(data);
       }
 
       enableAccountTooltips();
