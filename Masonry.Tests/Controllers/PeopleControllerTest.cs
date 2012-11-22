@@ -41,10 +41,7 @@ namespace Masonry.Tests.Controllers
       var result = controller.Index(1) as JsonResult;
       Assert.IsNotNull(result);
       Assert.AreEqual(JsonRequestBehavior.AllowGet, result.JsonRequestBehavior);
-
-      var model = result.Data as PeopleModel;
-      Assert.IsNotNull(model);
-      Assert.AreEqual(profiles, model.Profiles);
+      Assert.AreEqual(profiles, result.Data);
 
       Repository.Verify(x => x.GetUserProfiles(1, 1), Times.Once());
     }
@@ -86,12 +83,7 @@ namespace Masonry.Tests.Controllers
 
       Assert.IsNotNull(result);
       Assert.AreEqual(JsonRequestBehavior.AllowGet, result.JsonRequestBehavior);
-
-      var model = result.Data as PeopleModel;
-      Assert.IsNotNull(model);
-      Assert.AreEqual(user.Account, model.Account);
-      Assert.AreEqual(user.Name, model.Name);
-      Assert.AreEqual(profiles, model.Profiles);
+      Assert.AreEqual(profiles, result.Data);
 
       Repository.Verify(x => x.FindUser("user"), Times.Once());
       Repository.Verify(x => x.GetFollowings(1, 0), Times.Once());
@@ -147,12 +139,7 @@ namespace Masonry.Tests.Controllers
 
       Assert.IsNotNull(result);
       Assert.AreEqual(JsonRequestBehavior.AllowGet, result.JsonRequestBehavior);
-
-      var model = result.Data as PeopleModel;
-      Assert.IsNotNull(model);
-      Assert.AreEqual(user.Account, model.Account);
-      Assert.AreEqual(user.Name, model.Name);
-      Assert.AreEqual(profiles, model.Profiles);
+      Assert.AreEqual(profiles, result.Data);
 
       Repository.Verify(x => x.FindUser("user"), Times.Once());
       Repository.Verify(x => x.GetFollowers(1, 0), Times.Once());

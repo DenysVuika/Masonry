@@ -30,7 +30,7 @@ else
 
     $(document).ready(function() {
       onFeedDataLoaded(initialData, '@Model.Account');
-      initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
+      initLazyLoading(getDataUrl, onFeedDataLoaded);
     });
 
     function onFeedDataLoaded(data, account) {

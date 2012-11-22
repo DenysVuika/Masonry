@@ -34,7 +34,7 @@ namespace Masonry.Controllers
       var model = new PeopleModel { Profiles = profiles };
 
       if (IsAjaxRequest())
-        return Json(model, JsonRequestBehavior.AllowGet);
+        return Json(model.Profiles, JsonRequestBehavior.AllowGet);
 
       return View(model);
     }
@@ -57,7 +57,7 @@ namespace Masonry.Controllers
       };
 
       if (IsAjaxRequest())
-        return Json(model, JsonRequestBehavior.AllowGet);
+        return Json(model.Profiles, JsonRequestBehavior.AllowGet);
 
       return View(model);
     }
@@ -80,7 +80,7 @@ namespace Masonry.Controllers
       };
 
       if (IsAjaxRequest())
-        return Json(model, JsonRequestBehavior.AllowGet);
+        return Json(model.Profiles, JsonRequestBehavior.AllowGet);
 
       return View(model);
     }

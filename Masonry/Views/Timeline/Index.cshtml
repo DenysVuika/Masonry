@@ -75,7 +75,7 @@
   $(document).ready(function () {
     onFeedDataLoaded(initialData, '@Model.Account');
     toggleNoPostsMessage();
-    initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
+    initLazyLoading(getDataUrl, onFeedDataLoaded);
   });
 
   function toggleNoPostsMessage() {

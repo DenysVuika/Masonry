@@ -395,7 +395,7 @@ namespace Masonry.Services
 
     public virtual IEnumerable<UserProfileModel> GetUserProfiles(int userId, int page = 0)
     {
-      if (userId <= 0) return Enumerable.Empty<UserProfileModel>();
+      if (userId <= 0 || page < 0) return Enumerable.Empty<UserProfileModel>();
 
       var skipRecords = page * Constants.UserProfilesPerPage;
 

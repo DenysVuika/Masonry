@@ -43,7 +43,10 @@
 </ul>
 
 <!-- Loading progress indicator -->
-<div style="text-align: center;" id="page-data-loading"></div>
+<div id="page-data-loading" style="text-align: center; display: none;">
+  <img src="@Url.Content("~/Content/images/facebook-loading.gif")" alt="Loading..."/>
+</div>
+<div id="content-loading-error" class="alert alert-error" style="text-align: center; display: none"></div>
 
 <script type="text/javascript">
 
@@ -51,15 +54,14 @@
   
    @if (Model.Profiles != null && Model.Profiles.Any())
    {
-     @: initialData = { Profiles: @Html.Raw(Json.Encode(Model.Profiles)) };
+     @: initialData = @Html.Raw(Json.Encode(Model.Profiles));
+   }
+   else
+   {
+     @: initialData = [];
    }
 
-  $(document).ready(function () {
-    if (initialData) {
-      onPeopleDataLoaded(initialData);
-    }
-    else {
-      onPeopleDataLoaded({ Profiles: [] });
-    }
-  });
+   $(document).ready(function() {
+     onPeopleDataLoaded(initialData);
+   });
 </script>

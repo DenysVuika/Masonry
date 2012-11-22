@@ -186,7 +186,7 @@ function FeedViewModel(account, data) {
     });
   };
 
-  self.appendPosts($(data));
+  self.appendPosts(data);
 }
 
 function UserProfileViewModel(data) {
@@ -213,13 +213,13 @@ function PeopleViewModel(data) {
   self.profiles = ko.observableArray([]);
 
   self.appendItems = function (items) {
-    items.each(function (index, entry) {
+    $(items).each(function (index, entry) {
       var viewmodel = new UserProfileViewModel(entry);
       self.profiles.push(viewmodel);
     });
   };
 
-  self.appendItems($(data.Profiles));
+  self.appendItems(data);
 }
 
 // ========================================================================================
@@ -232,7 +232,7 @@ function onPeopleDataLoaded(data) {
     ko.applyBindings(window.peopleFeed);
   }
   else {
-    window.peopleFeed.appendItems($(data.Profiles));
+    window.peopleFeed.appendItems(data);
   }
 }
 
@@ -431,24 +431,24 @@ function onAccountPopupClickedAway() {
 var _page = 0;
 var _inCallback = false;
 
-function initTimelineLazyLoading(url, onSuccess) {
+function initLazyLoading(url, onSuccess) {
   $(window).scroll(function () {
     if ($(window).scrollTop() == $(document).height() - $(window).height()) {
       if (_page > -1 && !_inCallback) {
         _inCallback = true;
-
+        _page++;
+        
         $("#page-data-loading").show();
         $("#content-loading-error").hide();
 
         $.ajax({
           type: "GET",
           dataType: "json",
-          url: url(),
+          url: url(_page),
           timeout: 5000,
           success: function (data, textStatus) {
             // check whether any posts are loaded
             if (data.length > 0) {
-              _page++;
               if (onSuccess && (typeof onSuccess == "function")) {
                 onSuccess(data);
               }
@@ -461,6 +461,7 @@ function initTimelineLazyLoading(url, onSuccess) {
           error: function (request, status, error) {
             $("#content-loading-error").text("Error getting data. There seems to be a server problem, please try again later.");
             $("#content-loading-error").show();
+            _page--;
           },
           complete: function (request, status) {
             _inCallback = false;
