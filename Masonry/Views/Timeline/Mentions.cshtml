@@ -20,7 +20,10 @@ else
   <div class="m-stream-container" style="display: none;" data-bind="template: { name: 'timeline-template' }"></div>
 
   <!-- Loading progress indicator -->
-  <div style="text-align: center;" id="page-data-loading"></div>
+  <div id="page-data-loading" style="text-align: center; display: none;">
+    <img src="@Url.Content("~/Content/images/facebook-loading.gif")" alt="Loading..."/>
+  </div>
+  <div id="content-loading-error" class="alert alert-error" style="text-align: center; display: none"></div>
 
   <script type="text/javascript">
     var initialData = { Posts: @Html.Raw(Json.Encode(Model.Posts)) };
@@ -51,38 +54,15 @@ else
 
     // smooth infinite scrolling
     // (downloads additional posts as soon as user scrolls to bottom)
-    var page = 0;
-    var _inCallback = false;
+    
+    function getDataUrl() {
+      var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
+      return $.resolvePath("/Timeline/Mentions?top=" + bottomPostId);
+    }
 
-    $(window).scroll(function() {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        loadMorePosts();
-      }
+    $(document).ready(function() {
+      initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
     });
-
-    function loadMorePosts() {
-      if (page > -1 && !_inCallback) {
-        var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
-        _inCallback = true;
-        page++;
-        $("#page-data-loading").html('<img src="@Url.Content("~/Content/images/facebook-loading.gif")"/>');
-        $.get($.resolvePath("/Timeline/Mentions?top=" + bottomPostId), onAdditionalPostsLoaded, "json");
-      }
-    }
-
-    function onAdditionalPostsLoaded(data) {
-      $("#page-data-loading").empty();
-      // check whether any posts are loaded
-      if (data.Posts.length > 0) {
-        onFeedDataLoaded(data);
-      }
-        // otherwise stop further attempts loading data as we reached the end
-      else {
-        page = -1;
-      }
-
-      _inCallback = false;
-    }
 
   </script>
 }

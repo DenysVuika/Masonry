@@ -425,6 +425,54 @@ function onAccountPopupClickedAway() {
 }
 
 // ========================================================================================
+// Smooth/infinite loading
+// ========================================================================================
+
+var _page = 0;
+var _inCallback = false;
+
+function initTimelineLazyLoading(url, onSuccess) {
+  $(window).scroll(function () {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+      if (_page > -1 && !_inCallback) {
+        _inCallback = true;
+
+        $("#page-data-loading").show();
+        $("#content-loading-error").hide();
+
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: url(),
+          timeout: 5000,
+          success: function (data, textStatus) {
+            // check whether any posts are loaded
+            if (data.Posts.length > 0) {
+              _page++;
+              if (onSuccess && (typeof onSuccess == "function")) {
+                onSuccess(data);
+              }
+            }
+            else {
+              // otherwise stop further attempts loading data as we reached the end
+              _page = -1;
+            }
+          },
+          error: function (request, status, error) {
+            $("#content-loading-error").text("Error getting data. There seems to be a server problem, please try again later.");
+            $("#content-loading-error").show();
+          },
+          complete: function (request, status) {
+            _inCallback = false;
+            $("#page-data-loading").hide();
+          }
+        });
+      }
+    }
+  });
+}
+
+// ========================================================================================
 // UI
 // ========================================================================================
 

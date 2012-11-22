@@ -31,9 +31,10 @@
 <div class="m-stream-container" style="display: none;" data-bind="template: { name: 'timeline-template' }"></div>
 
 <!-- Loading progress indicator -->
-<div style="text-align: center;" id="page-data-loading"></div>
-
-<div id="timeline-error" class="alert alert-error" style="text-align: center; display: none"></div>
+<div id="page-data-loading" style="text-align: center; display: none;">
+  <img src="@Url.Content("~/Content/images/facebook-loading.gif")" alt="Loading..."/>
+</div>
+<div id="content-loading-error" class="alert alert-error" style="text-align: center; display: none"></div>
 
 <script type="text/javascript">
   
@@ -153,49 +154,14 @@
 
   // smooth infinite scrolling
   // (downloads additional posts as soon as user scrolls to bottom)
+  
+  function getDataUrl() {
+    var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
+    return $.resolvePath("/Timeline?top=" + bottomPostId);
+  }
 
-  var page = 0;
-  var _inCallback = false;
-
-  $(window).scroll(function() {
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-      loadMorePosts();
-    }
+  $(document).ready(function() {
+    initTimelineLazyLoading(getDataUrl, onFeedDataLoaded);
   });
   
-  function loadMorePosts() {
-    if (page > -1 && !_inCallback) {
-      var bottomPostId = Math.min.apply(this, $.map(window.timelineFeed.posts(), function(o) { return o.id; }));
-      _inCallback = true;
-      
-      $("#page-data-loading").html('<img src="@Url.Content("~/Content/images/facebook-loading.gif")"/>');
-      $("#timeline-error").hide();
-
-      $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: $.resolvePath("/Timeline?top=" + bottomPostId),
-        timeout: 5000,
-        success: function(data, textStatus) {
-          // check whether any posts are loaded
-          if (data.Posts.length > 0) {
-            page++;
-            onFeedDataLoaded(data);
-          }
-          else {
-            // otherwise stop further attempts loading data as we reached the end
-            page = -1;
-          }
-        },
-        error: function(request, status, error) {
-          $("#timeline-error").text("Error getting posts. There seems to be a server problem, please try again later.");
-          $("#timeline-error").show();
-        },
-        complete: function(request, status) {
-          _inCallback = false;
-          $("#page-data-loading").empty();
-        }
-      });
-    }
-  }
 </script>
