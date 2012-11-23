@@ -17,12 +17,15 @@
   
   @if (Model != null)
   {
-    @: initialData = { Posts: [@Html.Raw(Json.Encode(Model)) ]};
+    @: initialData = @Html.Raw(Json.Encode(Model));
+  }
+  else
+  {
+    @: initialData = [];
   }
 
   $(document).ready(function() {
-    if (initialData)
-      onPostLoaded(initialData);
+    onPostLoaded(initialData);
   });
   
   function onPostLoaded(data) {
