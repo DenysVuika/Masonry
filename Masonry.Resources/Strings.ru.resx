@@ -120,4 +120,25 @@
   <data name="BackToTop" xml:space="preserve">
     <value>Наверх</value>
   </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Подтвердите новый пароль</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Текущий пароль</value>
+  </data>
+  <data name="ErrorComparePassword" xml:space="preserve">
+    <value>Пароль и подтверждение пароля должны совпадать.</value>
+  </data>
+  <data name="ErrorRequiredField" xml:space="preserve">
+    <value>Поле '{0}' является обязательным.</value>
+  </data>
+  <data name="ErrorStringLength" xml:space="preserve">
+    <value>Поле '{0}' должно содержать не менее {2} символов.</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Это поле является обязательным.</value>
+  </data>
 </root>

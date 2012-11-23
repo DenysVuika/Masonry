@@ -18,26 +18,28 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 */
 
 using System.ComponentModel.DataAnnotations;
+using Masonry.Resources;
 
 namespace Masonry.Models
 {
 
   public class ChangePasswordModel
   {
-    [Required]
+    [Required(ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "ErrorRequiredField")]
     [DataType(DataType.Password)]
-    [Display(Name = "Current password")]
+    [Display(ResourceType = typeof(Strings), Name = "CurrentPassword")]
     public string OldPassword { get; set; }
 
-    [Required]
-    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+    [Required(ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "ErrorRequiredField")]
+    [StringLength(100, MinimumLength = 6, ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "ErrorStringLength")]
     [DataType(DataType.Password)]
-    [Display(Name = "New password")]
+    [Display(ResourceType = typeof(Strings), Name = "NewPassword")]
     public string NewPassword { get; set; }
 
+    [Required(ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "RequiredField")]
     [DataType(DataType.Password)]
-    [Display(Name = "Confirm new password")]
-    [System.Web.Mvc.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+    [Display(ResourceType = typeof(Strings), Name = "ConfirmNewPassword")]
+    [System.Web.Mvc.Compare("NewPassword",ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "ErrorComparePassword")]
     public string ConfirmPassword { get; set; }
   }
 

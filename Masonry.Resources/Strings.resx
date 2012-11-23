@@ -120,4 +120,25 @@
   <data name="BackToTop" xml:space="preserve">
     <value>Back to top</value>
   </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="ErrorComparePassword" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="ErrorRequiredField" xml:space="preserve">
+    <value>The {0} field is required.</value>
+  </data>
+  <data name="ErrorStringLength" xml:space="preserve">
+    <value>The {0} must be at least {2} characters long.</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
 </root>
