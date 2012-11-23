@@ -17,6 +17,9 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using System.Globalization;
+using System.Threading;
+using System.Web.Routing;
 using Masonry.Services;
 using System.Composition;
 using System.Web.Mvc;
@@ -34,10 +37,37 @@ namespace Masonry.Controllers
     [Import]
     public virtual IMasonrySettingsService Settings { get; set; }
 
+    [Import]
+    public virtual ILocalizationService Localization { get; set; }
+
     [NonAction]
     public virtual bool IsAjaxRequest()
     {
       return Request.IsAjaxRequest();
+    }
+
+    protected override void Initialize(RequestContext requestContext)
+    {
+      if (Localization != null)
+      {
+        string cultureName = null;
+        var request = requestContext.HttpContext.Request;
+
+        // Attempt to read the culture cookie from Request
+        var cultureCookie = request.Cookies["_culture"];
+        if (cultureCookie != null)
+          cultureName = cultureCookie.Value;
+        else if (request.UserLanguages != null)
+          cultureName = request.UserLanguages[0];
+
+        // Validate culture name
+        cultureName = Localization.GetImplementedCulture(cultureName); // This is safe
+
+        Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
+      }
+
+      base.Initialize(requestContext);
     }
   }
 }

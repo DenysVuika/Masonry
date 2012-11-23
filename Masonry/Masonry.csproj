@@ -158,9 +158,11 @@
     <Compile Include="Models\UserPictureModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILocalizationService.cs" />
     <Compile Include="Services\IMasonryDataRepository.cs" />
     <Compile Include="Services\IMasonrySecurityService.cs" />
     <Compile Include="Services\IMasonrySettingsService.cs" />
+    <Compile Include="Services\LocalizationService.cs" />
     <Compile Include="Services\MasonryDataRepository.cs" />
     <Compile Include="Services\MasonrySecurityService.cs" />
     <Compile Include="Services\MasonrySettingsService.cs" />
@@ -275,6 +277,10 @@
     <ProjectReference Include="..\Masonry.Data\Masonry.Data.csproj">
       <Project>{00f7e585-83aa-4c03-8162-baa42e268918}</Project>
       <Name>Masonry.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Masonry.Resources\Masonry.Resources.csproj">
+      <Project>{b590a609-5f07-47a8-b6ac-baa279435ea0}</Project>
+      <Name>Masonry.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

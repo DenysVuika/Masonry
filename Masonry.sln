@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CB9EAC
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masonry.Resources", "Masonry.Resources\Masonry.Resources.csproj", "{B590A609-5F07-47A8-B6AC-BAA279435EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{00F7E585-83AA-4C03-8162-BAA42E268918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F7E585-83AA-4C03-8162-BAA42E268918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F7E585-83AA-4C03-8162-BAA42E268918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B590A609-5F07-47A8-B6AC-BAA279435EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B590A609-5F07-47A8-B6AC-BAA279435EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B590A609-5F07-47A8-B6AC-BAA279435EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B590A609-5F07-47A8-B6AC-BAA279435EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
