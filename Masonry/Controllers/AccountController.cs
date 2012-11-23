@@ -161,7 +161,7 @@ namespace Masonry.Controllers
     {
       if (!captchaValid)
       {
-        ModelState.AddModelError("", "You did not type the verification word correctly. Please try again.");
+        ModelState.AddModelError("recaptcha", "You did not type the verification word correctly. Please try again.");
       }
       else if (ModelState.IsValid)
       {

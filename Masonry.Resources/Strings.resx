@@ -117,17 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="AccountPrompt" xml:space="preserve">
+    <value>i.e. johndoe</value>
+  </data>
   <data name="BackToTop" xml:space="preserve">
     <value>Back to top</value>
   </data>
   <data name="ConfirmNewPassword" xml:space="preserve">
     <value>Confirm new password</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current password</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="EmailAddressPrompt" xml:space="preserve">
+    <value>i.e. johndoe@mail.com</value>
+  </data>
+  <data name="ErrorAccountFormat" xml:space="preserve">
+    <value>Invalid account format.</value>
+  </data>
   <data name="ErrorComparePassword" xml:space="preserve">
     <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="ErrorEmailFormat" xml:space="preserve">
+    <value>Invalid email format.</value>
   </data>
   <data name="ErrorRequiredField" xml:space="preserve">
     <value>The {0} field is required.</value>
@@ -135,8 +156,20 @@
   <data name="ErrorStringLength" xml:space="preserve">
     <value>The {0} must be at least {2} characters long.</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NamePrompt" xml:space="preserve">
+    <value>i.e. John Doe</value>
+  </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New password</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
   </data>
   <data name="RequiredField" xml:space="preserve">
     <value>This field is required.</value>

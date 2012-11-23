@@ -60,7 +60,8 @@
     </div>
     <div class="control-group">
       <div class="controls">
-        @Html.Raw(Html.GenerateCaptcha())
+        @Html.Raw(Html.GenerateCaptcha("recaptcha", "clean"))
+        @Html.ValidationMessage("recaptcha")
       </div>
     </div>
     <div class="form-actions">

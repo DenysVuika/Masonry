@@ -71,5 +71,38 @@ namespace Masonry.Extensions
 
       return cache.Values;
     }
+
+    //public static string GenerateCaptcha(this MasonryHtmlHelper helper, string theme = "clean")
+    //{
+    //  var privateKey = ConfigurationManager.AppSettings["RecaptchaPrivateKey"];
+    //  var publicKey = ConfigurationManager.AppSettings["RecaptchaPublicKey"];
+
+    //  if (string.IsNullOrEmpty(publicKey) || string.IsNullOrEmpty(privateKey))
+    //    throw new ApplicationException("reCAPTCHA needs to be configured with a public & private key.");
+
+    //  var control = new RecaptchaControl
+    //  {
+    //    Theme = theme,
+    //    PublicKey = publicKey,
+    //    PrivateKey = privateKey,
+    //    Language = Thread.CurrentThread.CurrentCulture.Name
+    //  };
+
+    //  var htmlWriter = new HtmlTextWriter(new StringWriter());
+    //  control.RenderControl(htmlWriter);
+    //  return htmlWriter.InnerWriter.ToString();
+    //}
+
+    //public static MvcHtmlString GenerateCaptchaSetting(this MasonryHtmlHelper helper, string theme = "clean")
+    //{
+    //  var culture = Thread.CurrentThread.CurrentCulture.Name;
+      
+    //  var result = string.Format(
+    //    "<script type=\"text/javascript\">var RecaptchaOptions = {{ lang : '{0}', theme : '{1}' }};</script>", 
+    //    culture, 
+    //    theme);
+
+    //  return MvcHtmlString.Create(result);
+    //}
   }
 }
