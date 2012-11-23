@@ -17,17 +17,17 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using Masonry.Configuration;
-using System.Composition;
+using System.Configuration;
 
-namespace Masonry.Services
+namespace Masonry.Configuration
 {
-  [Export(typeof(IMasonrySettingsService))]
-  public class MasonrySettingsService : IMasonrySettingsService
+  public class MembershipElement : ConfigurationElement
   {
+    [ConfigurationProperty("requireAccountConfirmation", DefaultValue = false)]
     public bool RequireAccountConfirmation
     {
-      get { return RuntimeConfiguration.Current.Membership.RequireAccountConfirmation; }
+      get { return (bool)this["requireAccountConfirmation"]; }
+      set { this["requireAccountConfirmation"] = value; }
     }
   }
 }
