@@ -24,7 +24,7 @@ using Masonry.Composition.Filters;
 
 namespace Masonry.Controllers
 {
-  public class HelpController : Controller
+  public class HelpController : MasonryController
   {
     //
     // GET: /Help/

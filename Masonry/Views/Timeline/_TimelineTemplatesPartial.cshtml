@@ -21,7 +21,7 @@
   @using (Ajax.BeginForm("Comment", "Timeline", new { area = "" }, new AjaxOptions { OnSuccess = "onCommentPosted" }))
   {
     <input name="PostId" type="hidden" data-bind="value: id"/>
-    <input name="Content" data-bind="attr: { id: 'comment-box-' + id }" type="text" class="input-block-level" placeholder="Write a comment..." autocomplete="off"/>
+    <input name="Content" data-bind="attr: { id: 'comment-box-' + id }" type="text" class="input-block-level" placeholder="@Strings.NewCommentPrompt" autocomplete="off"/>
   }
 </script>
 
@@ -36,7 +36,7 @@
 <script type="text/html" id="comments-section-template">  
   <div>
     <a data-toggle="collapse" data-bind="attr: { 'data-target' : '#comments_' + id }">
-      <i class="icon-comment"></i>&nbsp;Comments
+      <i class="icon-comment"></i>&nbsp;@Strings.Comments
       <span data-bind="visible: commentsCount() > 0, text: '(' + commentsCount() + ')'"></span>
     </a>
   </div>

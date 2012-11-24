@@ -1,12 +1,16 @@
 ﻿@model string
 @{
-    ViewBag.Title = "Help";
+    ViewBag.Title = Strings.Help;
 }
 
 @if (!User.Identity.IsAuthenticated)
 {
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h3>
+  <i class="icon-flag"></i>&nbsp;@Strings.Help
+</h3>
 
 @if (ViewBag.HelpPage != null)
 {
@@ -19,6 +23,6 @@
   </ul>
 }
 
-<div>
+<p>
   @Html.Raw(Model)
-</div>
+</p>

@@ -1,23 +1,23 @@
 ﻿<div class=" sidebar-nav">
   <ul class="nav nav-list" id="sidebar">
     
-    <li class="nav-header">Profile</li>
+    <li class="nav-header">@Strings.Profile</li>
     <li id="account_accountsettings">
       <a href="@Url.Action("Index", "Account", new { area = "" })">
-        <i class="icon-user"></i>&nbsp;Account settings
+        <i class="icon-user"></i>&nbsp;@Strings.Account
       </a>
     </li>
-    <li class="disabled"><a href="#"><i class="icon-envelope"></i>&nbsp;Email addresses</a></li>
+    <li class="disabled"><a href="#"><i class="icon-envelope"></i>&nbsp;@Strings.EmailSettings</a></li>
     <li id="account_changepassword">
       <a href="@Url.Action("ChangePassword", "Account", new { area = "" })">
-        <i class="icon-lock"></i>&nbsp;Change password
+        <i class="icon-lock"></i>&nbsp;@Strings.ChangePassword
       </a>
     </li>
     
     <li class="divider"></li>
     <li id="help_index">
       <a href="@Url.Action("Index", "Help", new { area = "" })">
-        <i class="icon-flag"></i>&nbsp;Help
+        <i class="icon-flag"></i>&nbsp;@Strings.Help
       </a>
     </li>
   </ul>

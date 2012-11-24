@@ -1,11 +1,10 @@
 ﻿@model Masonry.Models.TimelineModel
 @{
-    ViewBag.Title = "Mentions";
+    ViewBag.Title = Strings.Mentions;
 }
 
 <h3>
-  <i class="icon-globe"></i>
-  Mentions
+  <i class="icon-globe"></i>&nbsp;@Strings.Mentions
 </h3>
 
 @if (Model.Posts == null || !Model.Posts.Any())

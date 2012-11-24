@@ -73,7 +73,7 @@ namespace Masonry.Models
     public string Name { get; set; }
 
     [Required(ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "RequiredField")]
-    [DataType(DataType.EmailAddress)]
+    [DataType(DataType.EmailAddress, ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "ErrorEmailAddress")]
     [Display(ResourceType = typeof(Strings), Name = "EmailAddress", Prompt = "EmailAddressPrompt")]
     [RegularExpression(@"^[a-zA-Z0-9.!#$%&amp;'*+-/=?\^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "ErrorEmailFormat")]
     public string Email { get; set; }

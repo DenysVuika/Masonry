@@ -1,6 +1,15 @@
 ﻿@model Masonry.Models.UserProfileModel
 
 <style type="text/css">
+
+  .popover {
+    width: auto;
+  }
+  
+  .popover-content {
+    padding: 0;
+  }
+
     .profile-header {
         margin-left: 58px;
     }
@@ -28,33 +37,19 @@
         width: 48px;
         height: 48px;
     }
-
-    .profile-stats a {
-        float: none;
-        display: block;
-        color: #999;
-        line-height: 16px;
-        font-size: 10px;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-top: 1px solid #E8E8E8;
-      border-left: none;
-      padding-left: 0;
-    }
-
-    .profile-stats-list {
-        list-style: none;
-        padding-bottom: 10px;
-    }
-
-    .profile-stats-list li:first-child a {
-        border-top: none;
-    }
+   
+  .profile-footer {
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding: 8px 14px;
+    font-size: 14px;
+    line-height: 18px;
+  }
 </style>
 
 @{ var timelineLink = Url.Action("Feed", "Timeline", new { area = "", uid = Model.Account }); }
 
-<div>
+<div style="padding: 9px 14px">
   <div>
     <a href="@timelineLink">
       <img class="profile-user-picture" src="@Url.Action("PictureSmall", "Account", new { area = "", uid = Model.Account })" alt="@Model.Name"/>
@@ -67,35 +62,38 @@
         <h3 class="profile-user-account">@@@Model.Account</h3>
       </a>
     </div>
-    <hr/>
-    <ul class="pull-right profile-stats-list">
-      <li class="profile-stats">
-        <a href="@timelineLink"><strong>@Model.Posts</strong> Posts</a>
-      </li>
-      <li class="profile-stats">
-        <a href="@Url.Action("Following", "People", new { area = "", uid = Model.Account })">
-          <strong>@Model.Following</strong> Following
-        </a>
-      </li>
-      <li class="profile-stats">
-        <a href="@Url.Action("Followers", "People", new { area = "", uid = Model.Account })">
-          <strong>@Model.Followers</strong> Followers
-        </a>
-      </li>
-    </ul>
-    <p>
-      @if (Model.IsOwnProfile)
-      {
-        <a class="btn btn-success" href="@Url.Action("Index", "Account", new { area = "" })">Edit profile</a>
-      }
-      else if (Model.IsFollowed)
-      {
-        <a class="btn btn-danger" href="@Url.Action("Unfollow", "Timeline", new { area = "", uid = Model.Account })">Unfollow</a>
-      }
-      else
-      {
-        <a class="btn" href="@Url.Action("Follow", "Timeline", new { area = "", uid = Model.Account })">Follow</a>
-      }
-    </p>
   </div>
+</div>
+
+<div>
+  <ul class="profile-stats-list-horizontal">
+    <li>
+      <a href="@timelineLink"><strong>@Model.Posts</strong>@Strings.NumPosts</a>
+    </li>
+    <li>
+      <a href="@Url.Action("Following", "People", new { area = "", uid = Model.Account })">
+        <strong>@Model.Following</strong>@Strings.NumFollowing
+      </a>
+    </li>
+    <li>
+      <a href="@Url.Action("Followers", "People", new { area = "", uid = Model.Account })">
+        <strong>@Model.Followers</strong>@Strings.NumFollowers
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="profile-footer">
+  @if (Model.IsOwnProfile)
+  {
+    <a class="btn" href="@Url.Action("Index", "Account", new { area = "" })">@Strings.EditProfile</a>
+  }
+  else if (Model.IsFollowed)
+  {
+    <a class="btn btn-danger" href="@Url.Action("Unfollow", "Timeline", new { area = "", uid = Model.Account })">@Strings.Unfollow</a>
+  }
+  else
+  {
+    <a class="btn btn-primary" href="@Url.Action("Follow", "Timeline", new { area = "", uid = Model.Account })">@Strings.Follow</a>
+  }
 </div>

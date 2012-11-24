@@ -1,6 +1,6 @@
 ﻿@using Masonry.Controllers
 <ul class="nav pull-right">
-  <li class="divider-vertical" style="margin-right: 0px;"></li>
+  <li class="divider-vertical" style="margin-right: 0;"></li>
   @if (Request.IsAuthenticated)
   {
     <li class="dropdown">
@@ -17,30 +17,30 @@
         </li>
         <li class="divider"></li>
         <li>
-          <a href="@Url.Action("Index", "Help", new { area = "" })">Help</a>
-          <a href="@Url.Action("About", "Home", new { area = "" })">About</a>
+          <a href="@Url.Action("Index", "Help", new { area = "" })">@Strings.Help</a>
+          <a href="@Url.Action("About", "Home", new { area = "" })">@Strings.About</a>
         </li>
         <li class="divider"></li>
         <li>
-          <a href="@Url.Action("Logout", "Account", new { area = ""})">Sign out</a>
+          <a href="@Url.Action("Logout", "Account", new { area = ""})">@Strings.SignOut</a>
         </li>
       </ul>
     </li>
-    <li class="divider-vertical" style="margin: 0px;"></li>
+    <li class="divider-vertical" style="margin: 0;"></li>
   }
   else
   {
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        Guest
+        @Strings.Guest
         <b class="caret"></b>
       </a>
       <ul class="dropdown-menu">
         <li>
-          @Html.ActionLink("Sign In", "Login", "Account", new { area = "" }, null)
+          @Html.ActionLink(Strings.SignIn, "Login", "Account", new { area = "" }, null)
         </li>
         <li>
-          @Html.ActionLink("Register", "Register", "Account", new { area = "" }, null)
+          @Html.ActionLink(Strings.Register, "Register", "Account", new { area = "" }, null)
         </li>
       </ul>
     </li>

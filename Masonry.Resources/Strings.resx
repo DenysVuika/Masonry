@@ -117,14 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>
+  </data>
+  <data name="AccountInformation" xml:space="preserve">
+    <value>Account Information</value>
   </data>
   <data name="AccountPrompt" xml:space="preserve">
     <value>i.e. johndoe</value>
   </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Account settings</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archive</value>
+  </data>
   <data name="BackToTop" xml:space="preserve">
     <value>Back to top</value>
+  </data>
+  <data name="Bio" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="ChangePasswordSubmit" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
   </data>
   <data name="ConfirmNewPassword" xml:space="preserve">
     <value>Confirm new password</value>
@@ -132,8 +159,14 @@
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm password</value>
   </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current password</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit profile</value>
   </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Email address</value>
@@ -141,11 +174,17 @@
   <data name="EmailAddressPrompt" xml:space="preserve">
     <value>i.e. johndoe@mail.com</value>
   </data>
+  <data name="EmailSettings" xml:space="preserve">
+    <value>Email settings</value>
+  </data>
   <data name="ErrorAccountFormat" xml:space="preserve">
     <value>Invalid account format.</value>
   </data>
   <data name="ErrorComparePassword" xml:space="preserve">
     <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="ErrorEmailAddress" xml:space="preserve">
+    <value>Please enter a valid email address.</value>
   </data>
   <data name="ErrorEmailFormat" xml:space="preserve">
     <value>Invalid email format.</value>
@@ -156,22 +195,124 @@
   <data name="ErrorStringLength" xml:space="preserve">
     <value>The {0} must be at least {2} characters long.</value>
   </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Follow</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Lists" xml:space="preserve">
+    <value>Lists</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="Mentions" xml:space="preserve">
+    <value>Mentions</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="NamePrompt" xml:space="preserve">
     <value>i.e. John Doe</value>
   </data>
+  <data name="NewAccountHeader" xml:space="preserve">
+    <value>Create a New Account</value>
+  </data>
+  <data name="NewAccountNotes" xml:space="preserve">
+    <value>Use the form below to create a new account.</value>
+  </data>
+  <data name="NewCommentPrompt" xml:space="preserve">
+    <value>Write a comment...</value>
+  </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New password</value>
   </data>
+  <data name="NewPostHeader" xml:space="preserve">
+    <value>What's happening?</value>
+  </data>
+  <data name="NewPostPrompt" xml:space="preserve">
+    <value>What's on your mind?</value>
+  </data>
+  <data name="NewPostSubmit" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="NumFollowers" xml:space="preserve">
+    <value>followers</value>
+  </data>
+  <data name="NumFollowing" xml:space="preserve">
+    <value>following</value>
+  </data>
+  <data name="NumPosts" xml:space="preserve">
+    <value>posts</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterSubmit" xml:space="preserve">
+    <value>Register</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
   </data>
   <data name="RequiredField" xml:space="preserve">
     <value>This field is required.</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchPrompt" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="SignInNotes" xml:space="preserve">
+    <value>Please enter your user name and password. {0} if you don't have an account.</value>
+  </data>
+  <data name="SignInNotesRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="SignInSubmit" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="Timeline" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="Unfollow" xml:space="preserve">
+    <value>Unfollow</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Website</value>
   </data>
 </root>

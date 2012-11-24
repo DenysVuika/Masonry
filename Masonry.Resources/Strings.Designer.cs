@@ -61,11 +61,29 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string Account {
             get {
                 return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Information.
+        /// </summary>
+        public static string AccountInformation {
+            get {
+                return ResourceManager.GetString("AccountInformation", resourceCulture);
             }
         }
         
@@ -79,11 +97,74 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account settings.
+        /// </summary>
+        public static string AccountSettings {
+            get {
+                return ResourceManager.GetString("AccountSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Archive.
+        /// </summary>
+        public static string Archive {
+            get {
+                return ResourceManager.GetString("Archive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to top.
         /// </summary>
         public static string BackToTop {
             get {
                 return ResourceManager.GetString("BackToTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bio.
+        /// </summary>
+        public static string Bio {
+            get {
+                return ResourceManager.GetString("Bio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string ChangePasswordSubmit {
+            get {
+                return ResourceManager.GetString("ChangePasswordSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
             }
         }
         
@@ -106,11 +187,29 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connect.
+        /// </summary>
+        public static string Connect {
+            get {
+                return ResourceManager.GetString("Connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current password.
         /// </summary>
         public static string CurrentPassword {
             get {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit profile.
+        /// </summary>
+        public static string EditProfile {
+            get {
+                return ResourceManager.GetString("EditProfile", resourceCulture);
             }
         }
         
@@ -133,6 +232,15 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email settings.
+        /// </summary>
+        public static string EmailSettings {
+            get {
+                return ResourceManager.GetString("EmailSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid account format..
         /// </summary>
         public static string ErrorAccountFormat {
@@ -147,6 +255,15 @@ namespace Masonry.Resources {
         public static string ErrorComparePassword {
             get {
                 return ResourceManager.GetString("ErrorComparePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid email address..
+        /// </summary>
+        public static string ErrorEmailAddress {
+            get {
+                return ResourceManager.GetString("ErrorEmailAddress", resourceCulture);
             }
         }
         
@@ -178,6 +295,78 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favorites.
+        /// </summary>
+        public static string Favorites {
+            get {
+                return ResourceManager.GetString("Favorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow.
+        /// </summary>
+        public static string Follow {
+            get {
+                return ResourceManager.GetString("Follow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guest.
+        /// </summary>
+        public static string Guest {
+            get {
+                return ResourceManager.GetString("Guest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lists.
+        /// </summary>
+        public static string Lists {
+            get {
+                return ResourceManager.GetString("Lists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        public static string Main {
+            get {
+                return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mentions.
+        /// </summary>
+        public static string Mentions {
+            get {
+                return ResourceManager.GetString("Mentions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -196,6 +385,33 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a New Account.
+        /// </summary>
+        public static string NewAccountHeader {
+            get {
+                return ResourceManager.GetString("NewAccountHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the form below to create a new account..
+        /// </summary>
+        public static string NewAccountNotes {
+            get {
+                return ResourceManager.GetString("NewAccountNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write a comment....
+        /// </summary>
+        public static string NewCommentPrompt {
+            get {
+                return ResourceManager.GetString("NewCommentPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
         public static string NewPassword {
@@ -205,11 +421,110 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What&apos;s happening?.
+        /// </summary>
+        public static string NewPostHeader {
+            get {
+                return ResourceManager.GetString("NewPostHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What&apos;s on your mind?.
+        /// </summary>
+        public static string NewPostPrompt {
+            get {
+                return ResourceManager.GetString("NewPostPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post.
+        /// </summary>
+        public static string NewPostSubmit {
+            get {
+                return ResourceManager.GetString("NewPostSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to followers.
+        /// </summary>
+        public static string NumFollowers {
+            get {
+                return ResourceManager.GetString("NumFollowers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to following.
+        /// </summary>
+        public static string NumFollowing {
+            get {
+                return ResourceManager.GetString("NumFollowing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to posts.
+        /// </summary>
+        public static string NumPosts {
+            get {
+                return ResourceManager.GetString("NumPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People.
+        /// </summary>
+        public static string People {
+            get {
+                return ResourceManager.GetString("People", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo.
+        /// </summary>
+        public static string Photo {
+            get {
+                return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string RegisterSubmit {
+            get {
+                return ResourceManager.GetString("RegisterSubmit", resourceCulture);
             }
         }
         
@@ -228,6 +543,114 @@ namespace Masonry.Resources {
         public static string RequiredField {
             get {
                 return ResourceManager.GetString("RequiredField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save changes.
+        /// </summary>
+        public static string SaveChanges {
+            get {
+                return ResourceManager.GetString("SaveChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchPrompt {
+            get {
+                return ResourceManager.GetString("SearchPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign in.
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your user name and password. {0} if you don&apos;t have an account..
+        /// </summary>
+        public static string SignInNotes {
+            get {
+                return ResourceManager.GetString("SignInNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string SignInNotesRegister {
+            get {
+                return ResourceManager.GetString("SignInNotesRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign in.
+        /// </summary>
+        public static string SignInSubmit {
+            get {
+                return ResourceManager.GetString("SignInSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign out.
+        /// </summary>
+        public static string SignOut {
+            get {
+                return ResourceManager.GetString("SignOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasks.
+        /// </summary>
+        public static string Tasks {
+            get {
+                return ResourceManager.GetString("Tasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeline.
+        /// </summary>
+        public static string Timeline {
+            get {
+                return ResourceManager.GetString("Timeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfollow.
+        /// </summary>
+        public static string Unfollow {
+            get {
+                return ResourceManager.GetString("Unfollow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string Website {
+            get {
+                return ResourceManager.GetString("Website", resourceCulture);
             }
         }
     }

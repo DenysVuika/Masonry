@@ -18,6 +18,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 */
 
 using System.ComponentModel.DataAnnotations;
+using Masonry.Resources;
 
 namespace Masonry.Models
 {
@@ -25,15 +26,16 @@ namespace Masonry.Models
   {
     public string Account { get; set; }
 
-    [Display(Name = "Name")]
+    [Display(ResourceType = typeof(Strings), Name = "Name")]
     public string Name { get; set; }
     
-    [Display(Name = "Website")]
+    [Display(ResourceType = typeof(Strings), Name = "Website")]
     public string Website { get; set; }
 
-    [Display(Name = "Location")]
+    [Display(ResourceType = typeof(Strings), Name = "Location")]
     public string Location { get; set; }
 
+    [Display(ResourceType = typeof(Strings), Name = "Bio")]
     [MaxLength(160)]
     public string Bio { get; set; }
   }

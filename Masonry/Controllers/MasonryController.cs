@@ -48,21 +48,25 @@ namespace Masonry.Controllers
 
     protected override void Initialize(RequestContext requestContext)
     {
+
+      string cultureName = null;
+      var request = requestContext.HttpContext.Request;
+
+      // Attempt to read the culture cookie from Request
+      var cultureCookie = request.Cookies["_culture"];
+      if (cultureCookie != null)
+        cultureName = cultureCookie.Value;
+      else if (request.UserLanguages != null)
+        cultureName = request.UserLanguages[0];
+
       if (Localization != null)
       {
-        string cultureName = null;
-        var request = requestContext.HttpContext.Request;
-
-        // Attempt to read the culture cookie from Request
-        var cultureCookie = request.Cookies["_culture"];
-        if (cultureCookie != null)
-          cultureName = cultureCookie.Value;
-        else if (request.UserLanguages != null)
-          cultureName = request.UserLanguages[0];
-
         // Validate culture name
         cultureName = Localization.GetImplementedCulture(cultureName); // This is safe
+      }
 
+      if (!string.IsNullOrWhiteSpace(cultureName))
+      {
         Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
         Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
       }

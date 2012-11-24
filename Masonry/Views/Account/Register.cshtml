@@ -1,18 +1,18 @@
 ﻿@using Recaptcha
 @model Masonry.Models.RegisterModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = Strings.Register;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Create a New Account</h2>
-<p>Use the form below to create a new account.</p>
+<h2>@Strings.NewAccountHeader</h2>
+<p>@Strings.NewAccountNotes</p>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 {
   @Html.AntiForgeryToken()
   @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
   <fieldset>
-    <legend>Account Information</legend>
+    <legend>@Strings.AccountInformation</legend>
     <div class="control-group">
       <div class="control-label">
         @Html.LabelFor(m => m.Account)
@@ -65,7 +65,7 @@
       </div>
     </div>
     <div class="form-actions">
-      <input type="submit" value="Register" class="btn btn-primary" />
+      <input type="submit" value="@Strings.RegisterSubmit" class="btn btn-primary" />
     </div>
   </fieldset>
 }

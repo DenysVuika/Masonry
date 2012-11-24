@@ -1,11 +1,10 @@
 ﻿@model Masonry.Models.PeopleModel
 @{
-  ViewBag.Title = "People";
+  ViewBag.Title = Strings.People;
 }
 
 <h3>
-  <i class="icon-user"></i>
-  People
+  <i class="icon-user"></i>&nbsp;@Strings.People
 </h3>
 
 @{ Html.RenderPartial("_ProfileListPartial", Model); }

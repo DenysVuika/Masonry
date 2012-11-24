@@ -1,12 +1,11 @@
 ﻿@model Masonry.Models.LogOnModel
 @{
-  ViewBag.Title = "Log On";
+  ViewBag.Title = Strings.SignIn;
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Log On</h2>
+<h2>@Strings.SignIn</h2>
 <p>
-  Please enter your user name and password. @Html.ActionLink("Register", "Register", new { area = "" }, null)
-  if you don't have an account.
+  @Html.Raw(string.Format(Strings.SignInNotes, @Html.ActionLink(Strings.SignInNotesRegister, "Register", new { area = "" }, null)))
 </p>
 
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-horizontal" }))
@@ -14,7 +13,7 @@
   @Html.AntiForgeryToken()
   @Html.ValidationSummary(true, "Log on was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
   <fieldset>
-    <legend>Account Information</legend>
+    <legend>@Strings.AccountInformation</legend>
     <div class="control-group">
       <div class="control-label">
         @Html.LabelFor(m => m.Account)
@@ -48,7 +47,7 @@
       </div>
     </div>
     <div class="form-actions">
-      <input type="submit" value="Log On" class="btn btn-primary" />
+      <input type="submit" value="@Strings.SignInSubmit" class="btn btn-primary" />
     </div>
   </fieldset>
 }

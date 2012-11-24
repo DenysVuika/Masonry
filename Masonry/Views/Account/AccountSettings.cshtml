@@ -1,6 +1,6 @@
 ﻿@model Masonry.Models.AccountSettingsModel
 @{
-  ViewBag.Title = "Account Settings";
+  ViewBag.Title = Strings.AccountSettings;
   Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
 
@@ -25,7 +25,7 @@
 </style>
 
 <h3>
-  <i class="icon-user"></i>&nbsp;Account Settings
+  <i class="icon-user"></i>&nbsp;@Strings.AccountSettings
 </h3>
 
 <div id="browserWarning" class="alert alert-block" style="display: none">
@@ -51,10 +51,10 @@
     <hr/>
 
     <div class="control-group">
-      <div class="control-label">Photo</div>
+      <div class="control-label">@Strings.Photo</div>
       <div class="controls">
         <div>
-          <img class="picture-128" src="@Url.Action("Picture", "Account", new { area = "", uid = Model.Account })" alt="Photo" />
+          <img class="picture-128" src="@Url.Action("Picture", "Account", new { area = "", uid = Model.Account })" alt="@Strings.Photo" />
           <img id="previewer" class="picture-128" alt="" style="display: none"/>
         </div>
         <div>
@@ -110,8 +110,8 @@
     </div>
     <hr/>
     <div class="form-actions" style="background-color: white; border-top: none;">
-      <input id="submit" type="submit" value="Save changes" class="btn btn-primary" />
-      <a href="@Url.Action("Index", "Timeline", new { area = "" })" style="padding-left: 10px;">Cancel</a>
+      <input id="submit" type="submit" value="@Strings.SaveChanges" class="btn btn-primary" />
+      <a href="@Url.Action("Index", "Timeline", new { area = "" })" style="padding-left: 10px;">@Strings.Cancel</a>
     </div>
   </div>
 }

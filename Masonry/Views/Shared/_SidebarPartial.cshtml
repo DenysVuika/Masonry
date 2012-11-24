@@ -15,38 +15,28 @@
     <li class="divider"></li>*@
     
 
-    <li class="nav-header">Main</li>
+    <li class="nav-header">@Strings.Main</li>
     <li id="timeline_index">
       <a href="@Url.Action("Index", "Timeline", new { area = "" })">
-        <i class="icon-list"></i>&nbsp;Timeline
+        <i class="icon-list"></i>&nbsp;@Strings.Timeline
       </a>
     </li>
     <li id="timeline_mentions">
       <a href="@Url.Action("Mentions", "Timeline", new { area = "" })">
-        <i class="icon-globe"></i>&nbsp;Mentions
+        <i class="icon-globe"></i>&nbsp;@Strings.Mentions
       </a>
     </li>
-    <li class="disabled"><a href="#"><i class="icon-calendar"></i>&nbsp;Archive</a></li>
-    <li class="disabled"><a href="#"><i class="icon-star"></i>&nbsp;Favorites</a></li>
-    <li class="disabled"><a href="#"><i class="icon-tasks"></i>&nbsp;Tasks</a></li>
+    <li class="disabled"><a href="#"><i class="icon-calendar"></i>&nbsp;@Strings.Archive</a></li>
+    <li class="disabled"><a href="#"><i class="icon-star"></i>&nbsp;@Strings.Favorites</a></li>
+    <li class="disabled"><a href="#"><i class="icon-tasks"></i>&nbsp;@Strings.Tasks</a></li>
     
     <li id="search_index">
       <a href="@Url.Action("Index", "Search", new { area = "" })">
-        <i class="icon-search"></i>&nbsp;Search
+        <i class="icon-search"></i>&nbsp;@Strings.Search
       </a>
     </li>
   
-    <li class="nav-header">Lists</li>
-    
-    @if (ViewBag.NavigationPath == "timeline_feed" && !string.IsNullOrWhiteSpace(ViewBag.NavigationFeed))
-    {
-      <li id="@ViewBag.NavigationPath">
-        <a href="@Url.Action("Feed", "Timeline", new { area = "", uid = ViewBag.NavigationFeed })">
-          <i class="icon-comment"></i>&nbsp;@@@ViewBag.NavigationFeed
-        </a>
-      </li>
-    }
-
+    <li class="nav-header">@Strings.Lists</li>
     <li class="disabled"><a href="#"><i class="icon-filter"></i>&nbsp;Today</a></li>
     <li class="disabled"><a href="#"><i class="icon-filter"></i>&nbsp;Last Week</a></li>
 
@@ -63,7 +53,7 @@
       </li>
     }
     
-    <li class="nav-header">Connect</li>
+    <li class="nav-header">@Strings.Connect</li>
     @*<li class="disabled">
       <a href="#">
         <i class="icon-envelope"></i>&nbsp;Messages
@@ -73,15 +63,23 @@
     </li>*@
     <li id="people_index">
       <a href="@Url.Action("Index", "People", new { area = "" })">
-        <i class="icon-user"></i>&nbsp;People
+        <i class="icon-user"></i>&nbsp;@Strings.People
       </a>
     </li>
+    @if (ViewBag.NavigationPath == "timeline_feed" && !string.IsNullOrWhiteSpace(ViewBag.NavigationFeed))
+    {
+      <li id="@ViewBag.NavigationPath">
+        <a href="@Url.Action("Feed", "Timeline", new { area = "", uid = ViewBag.NavigationFeed })">
+          <i class="icon-comment"></i>&nbsp;@@@ViewBag.NavigationFeed
+        </a>
+      </li>
+    }
     @*<li class="disabled"><a href="#"><i class="icon-plus-sign"></i>&nbsp;Invite Friends</a></li>*@
     
     <li class="divider"></li>
     <li id="help_index">
       <a href="@Url.Action("Index", "Help", new { area = "" })">
-        <i class="icon-flag"></i>&nbsp;Help
+        <i class="icon-flag"></i>&nbsp;@Strings.Help
       </a>
     </li>
   </ul>

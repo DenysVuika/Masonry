@@ -46,7 +46,7 @@
           @using (Html.BeginForm("Index", "Search", new { area = "" }, FormMethod.Post, new { @class = "navbar-search pull-right" }))
           {
             <div class="input-append">
-              <input type="text" class="span2" name="q" id="q" placeholder="Search" />
+              <input type="text" class="span2" name="q" id="q" placeholder="@Strings.SearchPrompt" />
               <button type="submit" class="btn" style="margin-top: 0;">
                 <i class="icon-search"></i>
               </button>
@@ -80,10 +80,9 @@
   
   @* Post status update (dialog) *@
   <div id="post-status-update" class="modal hide">
-    
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4>What's happening?</h4>
+      <h3 class="modal-title">@Strings.NewPostHeader</h3>
     </div>
     @using (Ajax.BeginForm("UpdateStatus", "Timeline", new { area = "" }, new AjaxOptions { OnSuccess = "onStatusUpdated" }, new { @class = "modal-form" }))
     {
@@ -91,7 +90,7 @@
         <textarea id="new-post-dialog" name="content" rows="4" class="input-block-level" style="resize: none" autofocus></textarea>
       </div>
       <div class="modal-footer">
-        <input type="submit" value="Post" class="btn btn-success"/>
+        <input type="submit" value="@Strings.NewPostSubmit" class="btn btn-success"/>
       </div>
     }
   </div>
@@ -103,6 +102,7 @@
   <script src="~/Scripts/masonry.js" type="text/javascript"></script>
   
   <script type="text/javascript">
+
     function onStatusUpdated(data, status, response) {
       // TODO: error checks
       $("#new-post-dialog").val("");
