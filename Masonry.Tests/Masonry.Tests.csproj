@@ -82,6 +82,10 @@
       <Project>{00f7e585-83aa-4c03-8162-baa42e268918}</Project>
       <Name>Masonry.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Masonry.Resources\Masonry.Resources.csproj">
+      <Project>{b590a609-5f07-47a8-b6ac-baa279435ea0}</Project>
+      <Name>Masonry.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Masonry\Masonry.csproj">
       <Project>{5553DA9F-82EC-40CD-BC68-40BDAED36672}</Project>
       <Name>Masonry</Name>
