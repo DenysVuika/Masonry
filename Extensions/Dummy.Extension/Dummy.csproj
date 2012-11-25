@@ -122,6 +122,10 @@
       <Project>{6cb13210-c917-4aa5-a637-a05ef77d5599}</Project>
       <Name>Masonry.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Masonry.Resources\Masonry.Resources.csproj">
+      <Project>{b590a609-5f07-47a8-b6ac-baa279435ea0}</Project>
+      <Name>Masonry.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Areas\Dummy\Views\Home\About.cshtml" />

@@ -109,10 +109,13 @@
     <Compile Include="Hosting\NamespaceMapping.cs" />
     <Compile Include="Hosting\NoCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILocalizationService.cs" />
+    <Compile Include="Services\ISecurityService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Web\ETagAttribute.cs" />
     <Compile Include="Web\ETagFilter.cs" />
     <Compile Include="Web\GZipAttribute.cs" />
+    <Compile Include="Web\MasonryControllerBase.cs" />
     <Compile Include="Web\MasonryHtmlHelper.cs" />
     <Compile Include="Web\MasonryWebViewPage.cs" />
   </ItemGroup>

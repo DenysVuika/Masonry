@@ -158,14 +158,12 @@
     <Compile Include="Models\UserPictureModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ILocalizationService.cs" />
     <Compile Include="Services\IMasonryDataRepository.cs" />
-    <Compile Include="Services\IMasonrySecurityService.cs" />
-    <Compile Include="Services\IMasonrySettingsService.cs" />
+    <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Services\LocalizationService.cs" />
     <Compile Include="Services\MasonryDataRepository.cs" />
-    <Compile Include="Services\MasonrySecurityService.cs" />
-    <Compile Include="Services\MasonrySettingsService.cs" />
+    <Compile Include="Services\SecurityService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Masonry.mdf" />

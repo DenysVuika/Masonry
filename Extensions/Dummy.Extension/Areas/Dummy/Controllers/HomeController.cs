@@ -18,12 +18,13 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 */
 
 using Masonry.Composition.Filters;
+using Masonry.Core.Web;
 using System.Web.Mvc;
 
 namespace Dummy.Areas.Dummy.Controllers
 {
   [Authorize]
-  public class HomeController : Controller
+  public class HomeController : MasonryControllerBase
   {
     //
     // GET: /Dummy/Home/

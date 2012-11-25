@@ -17,18 +17,24 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Masonry.Services
+namespace Masonry.Core.Services
 {
-  public interface IMasonrySecurityService
+  public interface ILocalizationService
   {
-    bool IsAuthenticated { get; }
-    int CurrentUserId { get; }
-    string CurrentUserName { get; }
+    /// <summary>
+    /// Returns a valid culture name based on "name" parameter. If "name" is not valid, it returns the default culture "en-US"
+    /// </summary>
+    /// <param name="name">Culture's name (e.g. en-US)</param>
+    string GetImplementedCulture(string name);
 
-    bool Login(string userName, string password, bool persistCookie = false);
-    void Logout();
-    bool ChangePassword(string userName, string currentPassword, string newPassword);
-    bool ConfirmAccount(string accountConfirmationToken);
-    void CreateUserAndAccount(string account, string password, string email, string name, bool requireConfirmation = false);
+    /// <summary>
+    /// Returns default culture name which is the first name decalared (e.g. en-US)
+    /// </summary>
+    /// <returns></returns>
+    string GetDefaultCulture();
+
+    string GetCurrentCulture();
+    string GetCurrentNeutralCulture();
+    string GetNeutralCulture(string name);
   }
 }

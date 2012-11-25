@@ -21,12 +21,13 @@ using System;
 using System.Composition;
 using System.Web;
 using System.Web.Helpers;
+using Masonry.Core.Services;
 using WebMatrix.WebData;
 
 namespace Masonry.Services
 {
-  [Export(typeof(IMasonrySecurityService))]
-  public class MasonrySecurityService : IMasonrySecurityService
+  [Export(typeof(ISecurityService))]
+  public class SecurityService : ISecurityService
   {
     public bool IsAuthenticated
     {

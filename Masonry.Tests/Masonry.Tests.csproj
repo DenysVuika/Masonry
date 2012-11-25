@@ -78,6 +78,10 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Masonry.Core\Masonry.Core.csproj">
+      <Project>{6cb13210-c917-4aa5-a637-a05ef77d5599}</Project>
+      <Name>Masonry.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Masonry.Data\Masonry.Data.csproj">
       <Project>{00f7e585-83aa-4c03-8162-baa42e268918}</Project>
       <Name>Masonry.Data</Name>

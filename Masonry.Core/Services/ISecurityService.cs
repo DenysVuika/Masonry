@@ -17,10 +17,18 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Masonry.Services
+namespace Masonry.Core.Services
 {
-  public interface IMasonrySettingsService
+  public interface ISecurityService
   {
-    bool RequireAccountConfirmation { get; }
+    bool IsAuthenticated { get; }
+    int CurrentUserId { get; }
+    string CurrentUserName { get; }
+
+    bool Login(string userName, string password, bool persistCookie = false);
+    void Logout();
+    bool ChangePassword(string userName, string currentPassword, string newPassword);
+    bool ConfirmAccount(string accountConfirmationToken);
+    void CreateUserAndAccount(string account, string password, string email, string name, bool requireConfirmation = false);
   }
 }
