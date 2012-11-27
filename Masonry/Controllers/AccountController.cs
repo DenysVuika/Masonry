@@ -17,22 +17,20 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using Masonry.Composition.Filters;
+using Masonry.Core.Web;
+using Masonry.Models;
+using Masonry.Resources;
+using Recaptcha;
 using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Masonry.Composition.Filters;
-using Masonry.Core.Web;
-using Masonry.Models;
-using Recaptcha;
 
 namespace Masonry.Controllers
 {
   public class AccountController : MasonryController
   {
-    public const string ConfirmSuccessful = "Your account has been confirmed. Thanks!";
-    public const string ConfirmFailed = "There was problem while confirming your account.";
-
     [Authorize]
     public ActionResult Index()
     {
@@ -81,13 +79,13 @@ namespace Masonry.Controllers
             image);
 
           if (result)
-            TempData["Notification"] = "Account settings have been successfully updated.";
+            TempData["Notification"] = Strings.MsgAccountSettingsUpdated;
           
           return RedirectToAction("Index", "Account");
         }
         catch
         {
-          ModelState.AddModelError("", "Error updating account settings.");
+          ModelState.AddModelError("", Strings.ErrorAccountSettingsUpdate);
         }
       }
 
@@ -118,7 +116,7 @@ namespace Masonry.Controllers
           return RedirectToAction("Index", "Home");
         }
         
-        ModelState.AddModelError("", "The user name or password provided is incorrect.");
+        ModelState.AddModelError("", Strings.ErrorLogin);
       }
 
       // If we got this far, something failed, redisplay form
@@ -161,7 +159,7 @@ namespace Masonry.Controllers
     {
       if (!captchaValid)
       {
-        ModelState.AddModelError("recaptcha", "You did not type the verification word correctly. Please try again.");
+        ModelState.AddModelError("recaptcha", Strings.ErrorInvalidRecaptcha);
       }
       else if (ModelState.IsValid)
       {
@@ -186,7 +184,7 @@ namespace Masonry.Controllers
         }
         catch (Exception)
         {
-          ModelState.AddModelError("", "An error occurred during registration");
+          ModelState.AddModelError("", Strings.ErrorRegistration);
         }
       }
 
@@ -198,14 +196,14 @@ namespace Masonry.Controllers
     {
       return View();
     }
-    
+
     // Account confirmation (triggered from email link)
     public ActionResult Confirm(string token)
     {
       if (!string.IsNullOrWhiteSpace(token) && Security.ConfirmAccount(token))
-        ViewBag.Message = ConfirmSuccessful;
+        ViewBag.Message = Strings.MsgAccountConfirm;
       else
-        ViewBag.Message = ConfirmFailed;
+        ViewBag.Message = Strings.ErrorAccountConfirm;
 
       return View();
     }
@@ -241,11 +239,11 @@ namespace Masonry.Controllers
 
         if (changePasswordSucceeded)
         {
-          TempData["Notification"] = "Your password has been changed successfully.";
+          TempData["Notification"] = Strings.MsgChangePassword;
           return RedirectToAction("AccountSettings", "Account"); 
         }
 
-        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+        ModelState.AddModelError("", Strings.ErrorChangePassword);
       }
 
       // If we got this far, something failed, redisplay form

@@ -26,8 +26,6 @@ namespace Masonry.Controllers
   {
     public ActionResult Index()
     {
-      ViewBag.Message = "Welcome to ASP.NET MVC!";
-
       // Automatically redirect authenticated users to the timeline
       if (Security.IsAuthenticated)
       {

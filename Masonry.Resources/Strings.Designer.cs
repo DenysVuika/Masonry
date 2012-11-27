@@ -241,11 +241,38 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was problem while confirming your account..
+        /// </summary>
+        public static string ErrorAccountConfirm {
+            get {
+                return ResourceManager.GetString("ErrorAccountConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid account format..
         /// </summary>
         public static string ErrorAccountFormat {
             get {
                 return ResourceManager.GetString("ErrorAccountFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error updating account settings..
+        /// </summary>
+        public static string ErrorAccountSettingsUpdate {
+            get {
+                return ResourceManager.GetString("ErrorAccountSettingsUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current password is incorrect or the new password is invalid..
+        /// </summary>
+        public static string ErrorChangePassword {
+            get {
+                return ResourceManager.GetString("ErrorChangePassword", resourceCulture);
             }
         }
         
@@ -273,6 +300,123 @@ namespace Masonry.Resources {
         public static string ErrorEmailFormat {
             get {
                 return ResourceManager.GetString("ErrorEmailFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You did not type the verification word correctly. Please try again..
+        /// </summary>
+        public static string ErrorInvalidRecaptcha {
+            get {
+                return ResourceManager.GetString("ErrorInvalidRecaptcha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user name or password provided is incorrect..
+        /// </summary>
+        public static string ErrorLogin {
+            get {
+                return ResourceManager.GetString("ErrorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator..
+        /// </summary>
+        public static string ErrorMembership {
+            get {
+                return ResourceManager.GetString("ErrorMembership", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A user name for that e-mail address already exists. Please enter a different e-mail address..
+        /// </summary>
+        public static string ErrorMembershipDuplicateEmail {
+            get {
+                return ResourceManager.GetString("ErrorMembershipDuplicateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name already exists. Please enter a different user name..
+        /// </summary>
+        public static string ErrorMembershipDuplicateUserName {
+            get {
+                return ResourceManager.GetString("ErrorMembershipDuplicateUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password retrieval answer provided is invalid. Please check the value and try again..
+        /// </summary>
+        public static string ErrorMembershipInvalidAnswer {
+            get {
+                return ResourceManager.GetString("ErrorMembershipInvalidAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The e-mail address provided is invalid. Please check the value and try again..
+        /// </summary>
+        public static string ErrorMembershipInvalidEmail {
+            get {
+                return ResourceManager.GetString("ErrorMembershipInvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password provided is invalid. Please enter a valid password value..
+        /// </summary>
+        public static string ErrorMembershipInvalidPassword {
+            get {
+                return ResourceManager.GetString("ErrorMembershipInvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password retrieval question provided is invalid. Please check the value and try again..
+        /// </summary>
+        public static string ErrorMembershipInvalidQuestion {
+            get {
+                return ResourceManager.GetString("ErrorMembershipInvalidQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user name provided is invalid. Please check the value and try again..
+        /// </summary>
+        public static string ErrorMembershipInvalidUserName {
+            get {
+                return ResourceManager.GetString("ErrorMembershipInvalidUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator..
+        /// </summary>
+        public static string ErrorMembershipProviderError {
+            get {
+                return ResourceManager.GetString("ErrorMembershipProviderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator..
+        /// </summary>
+        public static string ErrorMembershipUserRejected {
+            get {
+                return ResourceManager.GetString("ErrorMembershipUserRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred during registration..
+        /// </summary>
+        public static string ErrorRegistration {
+            get {
+                return ResourceManager.GetString("ErrorRegistration", resourceCulture);
             }
         }
         
@@ -363,6 +507,33 @@ namespace Masonry.Resources {
         public static string Mentions {
             get {
                 return ResourceManager.GetString("Mentions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your account has been confirmed. Thanks!.
+        /// </summary>
+        public static string MsgAccountConfirm {
+            get {
+                return ResourceManager.GetString("MsgAccountConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account settings have been successfully updated..
+        /// </summary>
+        public static string MsgAccountSettingsUpdated {
+            get {
+                return ResourceManager.GetString("MsgAccountSettingsUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password has been changed successfully..
+        /// </summary>
+        public static string MsgChangePassword {
+            get {
+                return ResourceManager.GetString("MsgChangePassword", resourceCulture);
             }
         }
         

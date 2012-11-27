@@ -19,6 +19,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 
 using System.Web.Security;
 using Masonry.Data;
+using Masonry.Resources;
 using WebMatrix.WebData;
 using System.Security.Principal;
 
@@ -44,34 +45,34 @@ namespace Masonry.Controllers
       switch (createStatus)
       {
         case MembershipCreateStatus.DuplicateUserName:
-          return "User name already exists. Please enter a different user name.";
+          return Strings.ErrorMembershipDuplicateUserName;
 
         case MembershipCreateStatus.DuplicateEmail:
-          return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+          return Strings.ErrorMembershipDuplicateEmail;
 
         case MembershipCreateStatus.InvalidPassword:
-          return "The password provided is invalid. Please enter a valid password value.";
+          return Strings.ErrorMembershipInvalidPassword;
 
         case MembershipCreateStatus.InvalidEmail:
-          return "The e-mail address provided is invalid. Please check the value and try again.";
+          return Strings.ErrorMembershipInvalidEmail;
 
         case MembershipCreateStatus.InvalidAnswer:
-          return "The password retrieval answer provided is invalid. Please check the value and try again.";
+          return Strings.ErrorMembershipInvalidAnswer;
 
         case MembershipCreateStatus.InvalidQuestion:
-          return "The password retrieval question provided is invalid. Please check the value and try again.";
+          return Strings.ErrorMembershipInvalidQuestion;
 
         case MembershipCreateStatus.InvalidUserName:
-          return "The user name provided is invalid. Please check the value and try again.";
+          return Strings.ErrorMembershipInvalidUserName;
 
         case MembershipCreateStatus.ProviderError:
-          return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+          return Strings.ErrorMembershipProviderError;
 
         case MembershipCreateStatus.UserRejected:
-          return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+          return Strings.ErrorMembershipUserRejected;
 
         default:
-          return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+          return Strings.ErrorMembership;
       }
     }
   }

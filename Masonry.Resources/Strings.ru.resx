@@ -177,8 +177,17 @@
   <data name="EmailSettings" xml:space="preserve">
     <value>Настройки почты</value>
   </data>
+  <data name="ErrorAccountConfirm" xml:space="preserve">
+    <value>Ошибка подтверждения учётной записи.</value>
+  </data>
   <data name="ErrorAccountFormat" xml:space="preserve">
     <value>Неверный формат учётной записи.</value>
+  </data>
+  <data name="ErrorAccountSettingsUpdate" xml:space="preserve">
+    <value>При обновлении учётной записи произошла ошибка.</value>
+  </data>
+  <data name="ErrorChangePassword" xml:space="preserve">
+    <value>Некорректный текущий или новый пароль.</value>
   </data>
   <data name="ErrorComparePassword" xml:space="preserve">
     <value>Пароль и подтверждение пароля должны совпадать.</value>
@@ -188,6 +197,45 @@
   </data>
   <data name="ErrorEmailFormat" xml:space="preserve">
     <value>Неверный формат электронной почты.</value>
+  </data>
+  <data name="ErrorInvalidRecaptcha" xml:space="preserve">
+    <value>Вы ввели неправильное проверочное слово. Пожалуйста, попробуйте еще раз.</value>
+  </data>
+  <data name="ErrorLogin" xml:space="preserve">
+    <value>Некорректные имя пользователя или пароль.</value>
+  </data>
+  <data name="ErrorMembership" xml:space="preserve">
+    <value>Произошла внутренняя ошибка. Пожалуйста, проверьте введённые данные и попробуйте еще раз. Если проблема не исчезнет, пожалуйста,обратитесь к вашему системному администратору.</value>
+  </data>
+  <data name="ErrorMembershipDuplicateEmail" xml:space="preserve">
+    <value>Пользователь с таким адресом электронной почты уже существует. Пожалуйста, введите другой адрес электронной почты.</value>
+  </data>
+  <data name="ErrorMembershipDuplicateUserName" xml:space="preserve">
+    <value>Имя пользователя уже существует. Пожалуйста,введите другое имя пользователя.</value>
+  </data>
+  <data name="ErrorMembershipInvalidAnswer" xml:space="preserve">
+    <value>Неверный ответ на секретный вопрос. Пожалуйста, проверьте значение и повторите попытку.</value>
+  </data>
+  <data name="ErrorMembershipInvalidEmail" xml:space="preserve">
+    <value>Неверный адрес электронной почты. Пожалуйста, проверьте значение и повторите попытку.</value>
+  </data>
+  <data name="ErrorMembershipInvalidPassword" xml:space="preserve">
+    <value>Неверный пароль. Пожалуйста, введите правильный пароль.</value>
+  </data>
+  <data name="ErrorMembershipInvalidQuestion" xml:space="preserve">
+    <value>Неверный секретный вопрос. Пожалуйста, проверьте значение и повторите попытку.</value>
+  </data>
+  <data name="ErrorMembershipInvalidUserName" xml:space="preserve">
+    <value>Неправильное имя пользователя. Пожалуйста, проверьте значение и повторите попытку.</value>
+  </data>
+  <data name="ErrorMembershipProviderError" xml:space="preserve">
+    <value>Произошла ошибка авторизации. Пожалуйста, проверьте введённые данные и попробуйте еще раз. Если проблема не исчезнет, пожалуйста,обратитесь к вашему системному администратору.</value>
+  </data>
+  <data name="ErrorMembershipUserRejected" xml:space="preserve">
+    <value>Ошибка создания учётной записи. Пожалуйста, проверьте введённые данные и попробуйте еще раз. Если проблема не исчезнет, пожалуйста,обратитесь к вашему системному администратору.</value>
+  </data>
+  <data name="ErrorRegistration" xml:space="preserve">
+    <value>Произошла ошибка в процессе регистрации.</value>
   </data>
   <data name="ErrorRequiredField" xml:space="preserve">
     <value>Поле '{0}' является обязательным.</value>
@@ -218,6 +266,15 @@
   </data>
   <data name="Mentions" xml:space="preserve">
     <value>Упоминания</value>
+  </data>
+  <data name="MsgAccountConfirm" xml:space="preserve">
+    <value>Ваша учётная запись была подтверждена. Спасибо!</value>
+  </data>
+  <data name="MsgAccountSettingsUpdated" xml:space="preserve">
+    <value>Данные учётной записи были успешно обновлены.</value>
+  </data>
+  <data name="MsgChangePassword" xml:space="preserve">
+    <value>Ваш пароль был успешно изменён.</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>

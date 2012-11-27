@@ -1,6 +1,7 @@
 ﻿using Masonry.Controllers;
 using Masonry.Data.Model;
 using Masonry.Models;
+using Masonry.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -377,13 +378,13 @@ namespace Masonry.Tests.Controllers
       var result = controller.Confirm(null) as ViewResult;
       Assert.IsNotNull(result);
       Assert.AreEqual(string.Empty, result.ViewName);
-      Assert.AreEqual(AccountController.ConfirmFailed, result.ViewBag.Message);
+      Assert.AreEqual(Strings.ErrorAccountConfirm, result.ViewBag.Message);
 
       // test confirmation rejection
       result = controller.Confirm("token") as ViewResult;
       Assert.IsNotNull(result);
       Assert.AreEqual(string.Empty, result.ViewName);
-      Assert.AreEqual(AccountController.ConfirmFailed, result.ViewBag.Message);
+      Assert.AreEqual(Strings.ErrorAccountConfirm, result.ViewBag.Message);
 
       Security.Verify(x => x.ConfirmAccount("token"), Times.Once());
     }
@@ -396,7 +397,7 @@ namespace Masonry.Tests.Controllers
 
       Assert.IsNotNull(result);
       Assert.AreEqual(string.Empty, result.ViewName);
-      Assert.AreEqual(AccountController.ConfirmSuccessful, result.ViewBag.Message);
+      Assert.AreEqual(Strings.MsgAccountConfirm, result.ViewBag.Message);
       Security.Verify(mock => mock.ConfirmAccount("token"), Times.Once());
     }
 
