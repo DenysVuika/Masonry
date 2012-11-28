@@ -30,8 +30,8 @@
 
 <div id="browserWarning" class="alert alert-block" style="display: none">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4>Warning!</h4>
-  Your current browser supports HTML5 File Api only partially. Profile picture preview will be disabled.
+  <h4>@Strings.WarningHeader</h4>
+  @Strings.WarningHtml5FileApi
 </div>
 
 @if (TempData.ContainsKey("Notification"))
@@ -45,7 +45,7 @@
 @using (Html.BeginForm("AccountSettings", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
   @Html.AntiForgeryToken()
-  @Html.ValidationSummary(true, "Account update was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
+  @Html.ValidationSummary(true, Strings.ErrorAccountSettingsUpdate, new { @class = "alert alert-block alert-error" })
   <div>
     
     <hr/>
@@ -72,7 +72,7 @@
       <div class="controls">
         @Html.EditorFor(m => m.Name)
         <p>@Html.ValidationMessageFor(m => m.Name)</p>
-        <p class="controls-hint">Enter your real name, so people you know can recognize you.</p>
+        <p class="controls-hint">@Strings.AccountNameHint</p>
       </div>
     </div>
     <div class="control-group">
@@ -82,7 +82,7 @@
       <div class="controls">
         @Html.EditorFor(m => m.Location)
         <p>@Html.ValidationMessageFor(m => m.Location)</p>
-        <p class="controls-hint">Where in the world are you?</p>
+        <p class="controls-hint">@Strings.AccountLocationHint</p>
       </div>
     </div>
     <div class="control-group">
@@ -92,7 +92,7 @@
       <div class="controls">
         @Html.EditorFor(m => m.Website)
         <p>@Html.ValidationMessageFor(m => m.Website)</p>
-        <p class="controls-hint">Have a homepage or a blog? Put the address here.</p>
+        <p class="controls-hint">@Strings.AccountWebsiteHint</p>
       </div>
     </div>
     <div class="control-group">
@@ -103,7 +103,7 @@
         @Html.TextAreaFor(m => m.Bio, new { id = "bio_editor", rows = 3, @class="input-xxlarge", @style="resize:vertical" })
         <p>@Html.ValidationMessageFor(m => m.Bio)</p>
         <p class="controls-hint bio-counter">
-          About yourself in <strong>160</strong> characters or less.
+          @Html.Raw(string.Format(Strings.AccountBioHint, "<strong>160</strong>"))
           <span id="bio_counter" class="bio-counter-label">160</span>
         </p>
       </div>

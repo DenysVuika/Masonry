@@ -11,7 +11,7 @@
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-horizontal" }))
 {
   @Html.AntiForgeryToken()
-  @Html.ValidationSummary(true, "Log on was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
+  @Html.ValidationSummary(true, Strings.ErrorSignInSummary, new { @class = "alert alert-block alert-error" })
   <fieldset>
     <legend>@Strings.AccountInformation</legend>
     <div class="control-group">

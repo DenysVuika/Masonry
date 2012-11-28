@@ -79,11 +79,47 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About yourself in {0} characters or less..
+        /// </summary>
+        public static string AccountBioHint {
+            get {
+                return ResourceManager.GetString("AccountBioHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string AccountConfirmTitle {
+            get {
+                return ResourceManager.GetString("AccountConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Information.
         /// </summary>
         public static string AccountInformation {
             get {
                 return ResourceManager.GetString("AccountInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where in the world are you?.
+        /// </summary>
+        public static string AccountLocationHint {
+            get {
+                return ResourceManager.GetString("AccountLocationHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your real name, so people you know can recognize you..
+        /// </summary>
+        public static string AccountNameHint {
+            get {
+                return ResourceManager.GetString("AccountNameHint", resourceCulture);
             }
         }
         
@@ -102,6 +138,15 @@ namespace Masonry.Resources {
         public static string AccountSettings {
             get {
                 return ResourceManager.GetString("AccountSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Have a homepage or a blog? Put the address here..
+        /// </summary>
+        public static string AccountWebsiteHint {
+            get {
+                return ResourceManager.GetString("AccountWebsiteHint", resourceCulture);
             }
         }
         
@@ -259,7 +304,7 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error updating account settings..
+        ///   Looks up a localized string similar to Error updating account settings. Please correct the errors and try again..
         /// </summary>
         public static string ErrorAccountSettingsUpdate {
             get {
@@ -273,6 +318,15 @@ namespace Masonry.Resources {
         public static string ErrorChangePassword {
             get {
                 return ResourceManager.GetString("ErrorChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password change was unsuccessful. Please correct the errors and try again..
+        /// </summary>
+        public static string ErrorChangePasswordSummary {
+            get {
+                return ResourceManager.GetString("ErrorChangePasswordSummary", resourceCulture);
             }
         }
         
@@ -412,6 +466,15 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account creation was unsuccessful. Please correct the errors and try again..
+        /// </summary>
+        public static string ErrorNewAccountSummary {
+            get {
+                return ResourceManager.GetString("ErrorNewAccountSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred during registration..
         /// </summary>
         public static string ErrorRegistration {
@@ -426,6 +489,15 @@ namespace Masonry.Resources {
         public static string ErrorRequiredField {
             get {
                 return ResourceManager.GetString("ErrorRequiredField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log on was unsuccessful. Please correct the errors and try again..
+        /// </summary>
+        public static string ErrorSignInSummary {
+            get {
+                return ResourceManager.GetString("ErrorSignInSummary", resourceCulture);
             }
         }
         
@@ -799,6 +871,33 @@ namespace Masonry.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to But you are not done yet!.
+        /// </summary>
+        public static string ThanksHeader {
+            get {
+                return ResourceManager.GetString("ThanksHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An email with instructions on how to activate your account is on its way to you..
+        /// </summary>
+        public static string ThanksNotes {
+            get {
+                return ResourceManager.GetString("ThanksNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks for registering.
+        /// </summary>
+        public static string ThanksTitle {
+            get {
+                return ResourceManager.GetString("ThanksTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Timeline.
         /// </summary>
         public static string Timeline {
@@ -813,6 +912,33 @@ namespace Masonry.Resources {
         public static string Unfollow {
             get {
                 return ResourceManager.GetString("Unfollow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View all {0} comments.
+        /// </summary>
+        public static string ViewAllXComments {
+            get {
+                return ResourceManager.GetString("ViewAllXComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning!.
+        /// </summary>
+        public static string WarningHeader {
+            get {
+                return ResourceManager.GetString("WarningHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current browser supports HTML5 File Api only partially. Profile picture preview will be disabled..
+        /// </summary>
+        public static string WarningHtml5FileApi {
+            get {
+                return ResourceManager.GetString("WarningHtml5FileApi", resourceCulture);
             }
         }
         

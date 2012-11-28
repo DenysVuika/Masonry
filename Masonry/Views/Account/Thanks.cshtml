@@ -1,7 +1,7 @@
 ﻿@{
-    ViewBag.Title = "Thanks for registering";
+    ViewBag.Title = Strings.ThanksTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>But you&#8217;re not done yet!</h2>
-<p>An email with instructions on how to activate your account is on its way to you.</p>
+<h2>@Strings.ThanksHeader</h2>
+<p>@Strings.ThanksNotes</p>

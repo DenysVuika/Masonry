@@ -28,7 +28,7 @@
 <script type="text/html" id="view-all-comments-template">
   <div>
     <a data-bind="attr: { href: postUrl}">
-      <i class="icon-comment"></i><span data-bind="text: ' View all ' + commentsCount() + ' comments'"></span>
+      <i class="icon-comment"></i><span data-bind="text: ' ' + '@Strings.ViewAllXComments'.formatString(commentsCount())"></span>
     </a>
   </div>
 </script>

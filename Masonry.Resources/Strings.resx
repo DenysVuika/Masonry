@@ -123,14 +123,29 @@
   <data name="Account" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="AccountBioHint" xml:space="preserve">
+    <value>About yourself in {0} characters or less.</value>
+  </data>
+  <data name="AccountConfirmTitle" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="AccountInformation" xml:space="preserve">
     <value>Account Information</value>
+  </data>
+  <data name="AccountLocationHint" xml:space="preserve">
+    <value>Where in the world are you?</value>
+  </data>
+  <data name="AccountNameHint" xml:space="preserve">
+    <value>Enter your real name, so people you know can recognize you.</value>
   </data>
   <data name="AccountPrompt" xml:space="preserve">
     <value>i.e. johndoe</value>
   </data>
   <data name="AccountSettings" xml:space="preserve">
     <value>Account settings</value>
+  </data>
+  <data name="AccountWebsiteHint" xml:space="preserve">
+    <value>Have a homepage or a blog? Put the address here.</value>
   </data>
   <data name="Archive" xml:space="preserve">
     <value>Archive</value>
@@ -184,10 +199,13 @@
     <value>Invalid account format.</value>
   </data>
   <data name="ErrorAccountSettingsUpdate" xml:space="preserve">
-    <value>Error updating account settings.</value>
+    <value>Error updating account settings. Please correct the errors and try again.</value>
   </data>
   <data name="ErrorChangePassword" xml:space="preserve">
     <value>The current password is incorrect or the new password is invalid.</value>
+  </data>
+  <data name="ErrorChangePasswordSummary" xml:space="preserve">
+    <value>Password change was unsuccessful. Please correct the errors and try again.</value>
   </data>
   <data name="ErrorComparePassword" xml:space="preserve">
     <value>The password and confirmation password do not match.</value>
@@ -234,11 +252,17 @@
   <data name="ErrorMembershipUserRejected" xml:space="preserve">
     <value>The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.</value>
   </data>
+  <data name="ErrorNewAccountSummary" xml:space="preserve">
+    <value>Account creation was unsuccessful. Please correct the errors and try again.</value>
+  </data>
   <data name="ErrorRegistration" xml:space="preserve">
     <value>An error occurred during registration.</value>
   </data>
   <data name="ErrorRequiredField" xml:space="preserve">
     <value>The {0} field is required.</value>
+  </data>
+  <data name="ErrorSignInSummary" xml:space="preserve">
+    <value>Log on was unsuccessful. Please correct the errors and try again.</value>
   </data>
   <data name="ErrorStringLength" xml:space="preserve">
     <value>The {0} must be at least {2} characters long.</value>
@@ -363,11 +387,29 @@
   <data name="Tasks" xml:space="preserve">
     <value>Tasks</value>
   </data>
+  <data name="ThanksHeader" xml:space="preserve">
+    <value>But you are not done yet!</value>
+  </data>
+  <data name="ThanksNotes" xml:space="preserve">
+    <value>An email with instructions on how to activate your account is on its way to you.</value>
+  </data>
+  <data name="ThanksTitle" xml:space="preserve">
+    <value>Thanks for registering</value>
+  </data>
   <data name="Timeline" xml:space="preserve">
     <value>Timeline</value>
   </data>
   <data name="Unfollow" xml:space="preserve">
     <value>Unfollow</value>
+  </data>
+  <data name="ViewAllXComments" xml:space="preserve">
+    <value>View all {0} comments</value>
+  </data>
+  <data name="WarningHeader" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="WarningHtml5FileApi" xml:space="preserve">
+    <value>Your current browser supports HTML5 File Api only partially. Profile picture preview will be disabled.</value>
   </data>
   <data name="Website" xml:space="preserve">
     <value>Website</value>
