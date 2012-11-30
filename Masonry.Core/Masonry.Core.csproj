@@ -57,6 +57,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Composition.1.0.16\lib\net45\System.Composition.TypedParts.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -97,6 +98,11 @@
     <Compile Include="Composition\CompositionScopeModelBinderProvider.cs" />
     <Compile Include="Composition\MvcContainerConfiguration.cs" />
     <Compile Include="Composition\RequestCompositionScopeModule.cs" />
+    <Compile Include="Configuration\CoreConfiguration.cs" />
+    <Compile Include="Configuration\ExtensibilityElement.cs" />
+    <Compile Include="Configuration\ExtensionCollectionElement.cs" />
+    <Compile Include="Configuration\ExtensionElement.cs" />
+    <Compile Include="Configuration\ExtensionElementNameComparer.cs" />
     <Compile Include="Extensibility\ExtensionLoader.cs" />
     <Compile Include="Extensibility\ExtensionManager.cs" />
     <Compile Include="Hosting\EmbeddedFileProvider.cs" />

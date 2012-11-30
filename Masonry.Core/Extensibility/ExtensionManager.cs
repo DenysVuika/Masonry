@@ -18,8 +18,9 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 */
 
 using System.Web.Hosting;
-using Masonry.Core.Composition;
 using Masonry.Core.Hosting;
+using Masonry.Core.Configuration;
+using System.Linq;
 
 namespace Masonry.Core.Extensibility
 {
@@ -30,21 +31,42 @@ namespace Masonry.Core.Extensibility
     public static void Register()
     {
       _extensionLoader = new ExtensionLoader();
-      _extensionLoader.LoadExtensions();
-
+      
       var viewProvider = new EmbeddedViewFileProvider();
       var contentProvider = new EmbeddedFileProvider();
 
       var provider = new AggregateVirtualPathProvider(viewProvider, contentProvider);
       HostingEnvironment.RegisterVirtualPathProvider(provider);
 
-      foreach (var assembly in _extensionLoader.Assemblies)
-      {
-        viewProvider.Add(assembly);
-        contentProvider.Add(assembly);
-      }
+      var config = CoreConfiguration.Current.Extensibility;
+      if (config == null) return;
 
-      CompositionProvider.AddAssemblies(_extensionLoader.Assemblies);
+      // automatic extension discovery with '*.Extension.dll' convention
+      if (config.AutomaticExtensionDiscovery)
+      {
+        _extensionLoader.LoadExtensions();
+
+        foreach (var assembly in _extensionLoader.Assemblies)
+        {
+          viewProvider.Add(assembly);
+          contentProvider.Add(assembly);
+        }
+      }
+      else
+      {
+        // controlled extension discovery based on web.config (without conventions)
+        foreach (var ext in config.Extensions
+          .OfType<ExtensionElement>()
+          .Distinct(new ExtensionElementNameComparer()))
+        {
+          var assembly = _extensionLoader.TryLoadAssemblyByName(ext.Name);
+          if (assembly == null) continue;
+
+          var mapping = new NamespaceMapping(assembly, ext.Namespace);
+          viewProvider.Add(mapping);
+          contentProvider.Add(mapping);
+        }
+      }
     }
   }
 }

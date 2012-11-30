@@ -1,4 +1,5 @@
-﻿/*
+﻿using Masonry.Core.Composition;
+/*
 The MIT License (MIT)
 Copyright (c) 2012 Denys Vuika
 
@@ -71,6 +72,51 @@ namespace Masonry.Core.Extensibility
         LoadAssembly(file);
     }
 
+    internal Assembly TryLoadAssemblyByName(string fileName, bool throwOnError = false)
+    {
+      if (string.IsNullOrWhiteSpace(fileName))
+      {
+        if (throwOnError)
+          throw new ArgumentNullException("fileName");
+        
+        return null;
+      }
+
+      var fullPath = Path.Combine(_path, fileName);
+      if (!File.Exists(fullPath))
+      {
+        if (throwOnError)
+          throw new FileNotFoundException("file not found", fullPath);
+
+        return null;
+      }
+
+      try
+      {
+        var assembly = Assembly.LoadFrom(fullPath);
+        BuildManager.AddReferencedAssembly(assembly);
+        CompositionProvider.AddAssembly(assembly);
+        _assemblies.Add(assembly);
+        return assembly;
+      }
+      catch (Exception err)
+      {
+        Trace.TraceWarning("Failed to load " + fullPath + ".", err);
+
+        var loaderEx = err as ReflectionTypeLoadException;
+        if (loaderEx != null)
+        {
+          foreach (var exception in loaderEx.LoaderExceptions)
+            Trace.TraceWarning(string.Format("Loader exception for file '{0}'.", fullPath), exception);
+        }
+
+        if (throwOnError)
+          throw;
+
+        return null;
+      }
+    }
+
     private void LoadAssembly(string fullPath)
     {
       if (fullPath == null) throw new ArgumentNullException("fullPath");
@@ -79,6 +125,7 @@ namespace Masonry.Core.Extensibility
       {
         var assembly = Assembly.LoadFrom(fullPath);
         BuildManager.AddReferencedAssembly(assembly);
+        CompositionProvider.AddAssembly(assembly);
         _assemblies.Add(assembly);
       }
       catch (Exception err)
