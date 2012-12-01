@@ -20,22 +20,22 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 using System;
 using System.Web.Mvc;
 
-namespace Masonry.Composition.Filters
+namespace Masonry.Extensibility
 {
-  public class NavbarElement: ActionFilterAttribute
+  public class SidebarElement : ActionFilterAttribute
   {
     public string TargetId { get; private set; }
 
-    public NavbarElement()
+    public SidebarElement()
     {
     }
-
-    public NavbarElement(string controller, string action, string area = null)
+    
+    public SidebarElement(string controller, string action, string area = null)
     {
       if (string.IsNullOrWhiteSpace(controller)) throw new ArgumentNullException("controller");
       if (string.IsNullOrWhiteSpace(action)) throw new ArgumentNullException("action");
 
-      TargetId = string.Format("nav_{0}{1}_{2}",
+      TargetId = string.Format("{0}{1}_{2}",
         string.IsNullOrWhiteSpace(area) ? string.Empty : area + "_",
         controller,
         action).ToLowerInvariant();
@@ -51,13 +51,13 @@ namespace Masonry.Composition.Filters
         var controller = filterContext.RouteData.Values["controller"].ToString();
         var action = filterContext.RouteData.Values["action"].ToString();
 
-        navigationPath = string.Format("nav_{0}{1}_{2}",
+        navigationPath = string.Format("{0}{1}_{2}",
           string.IsNullOrWhiteSpace(area) ? string.Empty : area + "_",
           controller,
           action).ToLowerInvariant(); 
       }
 
-      filterContext.Controller.ViewBag.NavbarSelection = navigationPath;
+      filterContext.Controller.ViewBag.NavigationPath = navigationPath;
     }
   }
 }

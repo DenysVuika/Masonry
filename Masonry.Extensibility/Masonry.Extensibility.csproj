@@ -7,8 +7,8 @@
     <ProjectGuid>{465F2C46-F316-4914-A7A5-811711A2FCD5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Masonry.Composition</RootNamespace>
-    <AssemblyName>Masonry.Composition</AssemblyName>
+    <RootNamespace>Masonry.Extensibility</RootNamespace>
+    <AssemblyName>Masonry.Extensibility</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -66,14 +66,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filters\NavbarElement.cs" />
-    <Compile Include="Filters\SidebarElement.cs" />
-    <Compile Include="Verbs\IActionVerb.cs" />
-    <Compile Include="Verbs\IHeaderActionVerb.cs" />
+    <Compile Include="NavbarElement.cs" />
+    <Compile Include="SidebarElement.cs" />
+    <Compile Include="IActionVerb.cs" />
+    <Compile Include="IHeaderActionVerb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Verbs\ISidebarActionVerb.cs" />
-    <Compile Include="Verbs\SidebarCategories.cs" />
-    <Compile Include="Verbs\VerbExtensions.cs" />
+    <Compile Include="ISidebarActionVerb.cs" />
+    <Compile Include="SidebarCategories.cs" />
+    <Compile Include="VerbExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

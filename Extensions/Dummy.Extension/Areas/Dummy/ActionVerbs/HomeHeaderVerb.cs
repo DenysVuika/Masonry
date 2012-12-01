@@ -18,7 +18,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 */
 
 using System.Composition;
-using Masonry.Composition.Verbs;
+using Masonry.Extensibility;
 
 namespace Dummy.Areas.Dummy.ActionVerbs
 {

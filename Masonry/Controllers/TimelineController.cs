@@ -17,7 +17,7 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using Masonry.Composition.Filters;
+using Masonry.Extensibility;
 using System.Web.Mvc;
 using Masonry.Core.Web;
 using Masonry.Models;

@@ -264,9 +264,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Masonry.Composition\Masonry.Composition.csproj">
+    <ProjectReference Include="..\Masonry.Extensibility\Masonry.Extensibility.csproj">
       <Project>{465f2c46-f316-4914-a7a5-811711a2fcd5}</Project>
-      <Name>Masonry.Composition</Name>
+      <Name>Masonry.Extensibility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Masonry.Core\Masonry.Core.csproj">
       <Project>{6cb13210-c917-4aa5-a637-a05ef77d5599}</Project>

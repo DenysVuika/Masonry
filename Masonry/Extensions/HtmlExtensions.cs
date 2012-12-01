@@ -20,7 +20,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Masonry.Composition.Verbs;
+using Masonry.Extensibility;
 using Masonry.Core.Composition;
 using Masonry.Core.Web;
 using WebMatrix.WebData;

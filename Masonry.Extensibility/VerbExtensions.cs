@@ -17,30 +17,24 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
-
-namespace Masonry.Composition.Verbs
+namespace Masonry.Extensibility
 {
-  /// <summary>
-  /// Default sidebar categories
-  /// </summary>
-  public static class SidebarCategories
+  public static class VerbExtensions
   {
-    public const string Apps = "apps";
-    public const string Main = "main";
-    public const string Connect = "connect";
-    public const string Lists = "lists";
-    public const string Help = "help";
-
-    public static bool IsDefaultCategory(string category)
+    public static string GetSidebarId(this IActionVerb verb)
     {
-      if (string.IsNullOrWhiteSpace(category)) throw new ArgumentNullException("category");
-
-      return category.Equals(Apps, StringComparison.OrdinalIgnoreCase)
-             || category.Equals(Main, StringComparison.OrdinalIgnoreCase)
-             || category.Equals(Connect, StringComparison.OrdinalIgnoreCase)
-             || category.Equals(Lists, StringComparison.OrdinalIgnoreCase)
-             || category.Equals(Help, StringComparison.OrdinalIgnoreCase);
+      return string.Format("{0}{1}_{2}", 
+        string.IsNullOrWhiteSpace(verb.Area) ? string.Empty : verb.Area + "_", 
+        verb.Controller, 
+        verb.Action).ToLowerInvariant();
+    }
+    
+    public static string GetNavbarId(this IActionVerb verb)
+    {
+      return string.Format("nav_{0}{1}_{2}",
+        string.IsNullOrWhiteSpace(verb.Area) ? string.Empty : verb.Area + "_",
+        verb.Controller,
+        verb.Action).ToLowerInvariant();
     }
   }
 }

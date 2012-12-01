@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dummy", "Extensions\Dummy.Extension\Dummy.csproj", "{680F269C-AC78-4EEB-AC69-F4246115F115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masonry.Composition", "Masonry.Composition\Masonry.Composition.csproj", "{465F2C46-F316-4914-A7A5-811711A2FCD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masonry.Extensibility", "Masonry.Extensibility\Masonry.Extensibility.csproj", "{465F2C46-F316-4914-A7A5-811711A2FCD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masonry.Data", "Masonry.Data\Masonry.Data.csproj", "{00F7E585-83AA-4C03-8162-BAA42E268918}"
 EndProject

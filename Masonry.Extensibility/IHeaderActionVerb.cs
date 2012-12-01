@@ -17,13 +17,12 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Masonry.Composition.Verbs
+namespace Masonry.Extensibility
 {
-  public interface IActionVerb
+  public interface IHeaderActionVerb : IActionVerb
   {
-    string Name { get; }
-    string Action { get; }
-    string Controller { get; }
-    string Area { get; }
+    string GroupName { get; }
+    int GroupOrder { get; }
+    bool IsPublic { get; }
   }
 }

@@ -23,7 +23,7 @@ using Masonry.Core.Composition;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebMatrix.WebData;
-using Masonry.Composition.Verbs;
+using Masonry.Extensibility;
 
 namespace Masonry
 {

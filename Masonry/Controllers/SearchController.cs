@@ -18,7 +18,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 */
 
 using System.Web.Mvc;
-using Masonry.Composition.Filters;
+using Masonry.Extensibility;
 
 namespace Masonry.Controllers
 {
