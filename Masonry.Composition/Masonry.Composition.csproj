@@ -72,6 +72,7 @@
     <Compile Include="Verbs\IHeaderActionVerb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Verbs\ISidebarActionVerb.cs" />
+    <Compile Include="Verbs\SidebarCategories.cs" />
     <Compile Include="Verbs\VerbExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

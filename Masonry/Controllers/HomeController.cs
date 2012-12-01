@@ -35,7 +35,7 @@ namespace Masonry.Controllers
       return View();
     }
 
-    [SidebarElement("help","index"), NavbarElement]
+    [SidebarElement("help","index")]
     public ActionResult About()
     {
       return View();

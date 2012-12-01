@@ -17,6 +17,7 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Masonry.Composition.Verbs;
@@ -41,15 +42,22 @@ namespace Masonry.Extensions
         .Where(v => v.IsPublic == !isAuthenticated);
     }
 
-    public static IEnumerable<ISidebarActionVerb> GetSidebarActions(this MasonryHtmlHelper helper)
+    //public static IEnumerable<ISidebarActionVerb> GetSidebarActions(this MasonryHtmlHelper helper)
+    //{
+    //  return CompositionProvider.Current.GetExports<ISidebarActionVerb>();
+    //}
+
+    public static IEnumerable<ISidebarActionVerb> GetSidebarActions(this MasonryHtmlHelper helper, string category)
     {
-      return CompositionProvider.Current.GetExports<ISidebarActionVerb>();
+      return CompositionProvider.Current
+        .GetExports<ISidebarActionVerb>()
+        .Where(v => category.Equals(v.Category, StringComparison.OrdinalIgnoreCase));
     }
 
-    public static bool HasSidebarActions(this MasonryHtmlHelper helper)
-    {
-      return GetSidebarActions(helper).Any();
-    }
+    //public static bool HasSidebarActions(this MasonryHtmlHelper helper)
+    //{
+    //  return GetSidebarActions(helper).Any();
+    //}
 
     public static IEnumerable<HeaderActionGroup> GetHeaderActionGroups(this MasonryHtmlHelper helper)
     {

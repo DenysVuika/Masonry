@@ -17,6 +17,7 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using System;
 using System.Web.Mvc;
 
 namespace Masonry.Composition.Filters
@@ -29,9 +30,15 @@ namespace Masonry.Composition.Filters
     {
     }
 
-    public NavbarElement(string targetId)
+    public NavbarElement(string controller, string action, string area = null)
     {
-      TargetId = targetId;
+      if (string.IsNullOrWhiteSpace(controller)) throw new ArgumentNullException("controller");
+      if (string.IsNullOrWhiteSpace(action)) throw new ArgumentNullException("action");
+
+      TargetId = string.Format("nav_{0}{1}_{2}",
+        string.IsNullOrWhiteSpace(area) ? string.Empty : area + "_",
+        controller,
+        action).ToLowerInvariant();
     }
 
     public override void OnActionExecuting(ActionExecutingContext filterContext)

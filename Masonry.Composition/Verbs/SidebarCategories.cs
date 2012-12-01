@@ -17,42 +17,30 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using Masonry.Composition.Verbs;
-using System.Composition;
+using System;
 
-namespace Dummy.Areas.Dummy.ActionVerbs
+namespace Masonry.Composition.Verbs
 {
-  [Export(typeof(ISidebarActionVerb))]
-  public class DummyListVerb : ISidebarActionVerb
+  /// <summary>
+  /// Default sidebar categories
+  /// </summary>
+  public static class SidebarCategories
   {
-    public string Name
-    {
-      get { return "Dummy"; }
-    }
+    public const string Apps = "apps";
+    public const string Main = "main";
+    public const string Connect = "connect";
+    public const string Lists = "lists";
+    public const string Help = "help";
 
-    public string Action
+    public static bool IsDefaultCategory(string category)
     {
-      get { return "Index"; }
-    }
+      if (string.IsNullOrWhiteSpace(category)) throw new ArgumentNullException("category");
 
-    public string Controller
-    {
-      get { return "Home"; }
-    }
-
-    public string Area
-    {
-      get { return "Dummy"; }
-    }
-    
-    public string Category
-    {
-      get { return SidebarCategories.Apps; }
-    }
-
-    public int Notifications
-    {
-      get { return 12; }
+      return category.Equals(Apps, StringComparison.OrdinalIgnoreCase)
+             || category.Equals(Main, StringComparison.OrdinalIgnoreCase)
+             || category.Equals(Connect, StringComparison.OrdinalIgnoreCase)
+             || category.Equals(Lists, StringComparison.OrdinalIgnoreCase)
+             || category.Equals(Help, StringComparison.OrdinalIgnoreCase);
     }
   }
 }

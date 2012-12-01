@@ -28,14 +28,14 @@ namespace Masonry.Controllers
   {
     //
     // GET: /Help/
-    [SidebarElement, NavbarElement]
+    [SidebarElement]
     public ActionResult Index()
     {
       return View(model: GetMarkdownContent("Index"));
     }
 
     // Any drill-down navigation will preserve Index selection state
-    [SidebarElement("help", "index"), NavbarElement("nav_help_index")]
+    [SidebarElement("help", "index")]
     public ActionResult Page(string page)
     {
       ViewBag.HelpPage = page;

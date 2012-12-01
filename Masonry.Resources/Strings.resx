@@ -147,6 +147,9 @@
   <data name="AccountWebsiteHint" xml:space="preserve">
     <value>Have a homepage or a blog? Put the address here.</value>
   </data>
+  <data name="Applications" xml:space="preserve">
+    <value>Applications</value>
+  </data>
   <data name="Archive" xml:space="preserve">
     <value>Archive</value>
   </data>

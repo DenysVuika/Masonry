@@ -147,6 +147,9 @@
   <data name="AccountWebsiteHint" xml:space="preserve">
     <value>У вас есть сайт или блог? Просто введите адрес.</value>
   </data>
+  <data name="Applications" xml:space="preserve">
+    <value>Приложения</value>
+  </data>
   <data name="Archive" xml:space="preserve">
     <value>Архив</value>
   </data>

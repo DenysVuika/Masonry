@@ -30,27 +30,49 @@
     <li class="disabled"><a href="#"><i class="icon-star"></i>&nbsp;@Strings.Favorites</a></li>
     <li class="disabled"><a href="#"><i class="icon-tasks"></i>&nbsp;@Strings.Tasks</a></li>
     
+    @{
+      var cMain = Masonry.GetSidebarActions(SidebarCategories.Main).ToList();
+      if (cMain.Count > 0)
+      {
+        foreach (var verb in cMain)
+        {
+          <li id="@verb.GetSidebarId()">
+            <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
+              <i class="icon-list-alt"></i>&nbsp;@verb.Name
+              @if (verb.Notifications > 0)
+              {
+                <span class="badge  pull-right">@verb.Notifications</span>
+              }
+            </a>
+          </li>
+        }
+      }
+    }
+    
     <li id="search_index">
       <a href="@Url.Action("Index", "Search", new { area = "" })">
         <i class="icon-search"></i>&nbsp;@Strings.Search
       </a>
     </li>
   
-    <li class="nav-header">@Strings.Lists</li>
-    <li class="disabled"><a href="#"><i class="icon-filter"></i>&nbsp;Today</a></li>
-    <li class="disabled"><a href="#"><i class="icon-filter"></i>&nbsp;Last Week</a></li>
-
-    @foreach (var verb in Masonry.GetSidebarActions())
-    {
-      <li id="@verb.GetSidebarId()">
-        <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
-          <i class="icon-list-alt"></i>&nbsp;@verb.Name
-          @if (verb.Notifications > 0)
-          {
-            <span class="badge  pull-right">@verb.Notifications</span>
-          }
-        </a>
-      </li>
+    @{
+      var cLists = Masonry.GetSidebarActions(SidebarCategories.Lists).ToList();
+      if (cLists.Count > 0)
+      {
+        <li class="nav-header">@Strings.Lists</li>
+        foreach (var verb in cLists)
+        {
+          <li id="@verb.GetSidebarId()">
+            <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
+              <i class="icon-list-alt"></i>&nbsp;@verb.Name
+              @if (verb.Notifications > 0)
+              {
+                <span class="badge  pull-right">@verb.Notifications</span>
+              }
+            </a>
+          </li>
+        }
+      }
     }
     
     <li class="nav-header">@Strings.Connect</li>
@@ -76,12 +98,74 @@
     }
     @*<li class="disabled"><a href="#"><i class="icon-plus-sign"></i>&nbsp;Invite Friends</a></li>*@
     
+    @{
+      // 'Connect' category items (external)
+      var cConnect = Masonry.GetSidebarActions(SidebarCategories.Connect).ToList();
+      if (cConnect.Count > 0)
+      {
+        foreach (var verb in cConnect)
+        {
+          <li id="@verb.GetSidebarId()">
+            <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
+              <i class="icon-list-alt"></i>&nbsp;@verb.Name
+              @if (verb.Notifications > 0)
+              {
+                <span class="badge  pull-right">@verb.Notifications</span>
+              }
+            </a>
+          </li>
+        }
+      }
+    }
+    
+    @{
+      // 'Applications' category
+      var cApps = Masonry.GetSidebarActions(SidebarCategories.Apps).ToList();
+      if (cApps.Count > 0)
+      {
+        <li class="nav-header">@Strings.Applications</li>
+        foreach (var verb in cApps)
+        {
+          <li id="@verb.GetSidebarId()">
+            <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
+              <i class="icon-list-alt"></i>&nbsp;@verb.Name
+              @if (verb.Notifications > 0)
+              {
+                <span class="badge  pull-right">@verb.Notifications</span>
+              }
+            </a>
+          </li>
+        }
+      }
+    }
+    
     <li class="divider"></li>
     <li id="help_index">
       <a href="@Url.Action("Index", "Help", new { area = "" })">
         <i class="icon-flag"></i>&nbsp;@Strings.Help
       </a>
     </li>
+    
+    @{
+      // 'Help' category items (external)
+      var cHelp = Masonry.GetSidebarActions(SidebarCategories.Help).ToList();
+      if (cHelp.Count > 0)
+      {
+        foreach (var verb in cHelp)
+        {
+          <li id="@verb.GetSidebarId()">
+            <a href="@Url.Action(verb.Action, verb.Controller, new { area = verb.Area })">
+              <i class="icon-flag"></i>&nbsp;@verb.Name
+              @if (verb.Notifications > 0)
+              {
+                <span class="badge  pull-right">@verb.Notifications</span>
+              }
+            </a>
+          </li>
+        }
+      }
+    }
+
   </ul>
 </div>
 <!--/.well -->
