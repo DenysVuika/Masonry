@@ -10,3 +10,4 @@ _ReSharper.*
 *.vspscc
 packages/*
 !packages/repositories.config
+.DS_Store
