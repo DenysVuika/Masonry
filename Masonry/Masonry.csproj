@@ -132,6 +132,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\RuntimeConfig.cs" />
     <Compile Include="Configuration\MembershipElement.cs" />
     <Compile Include="Configuration\RuntimeConfiguration.cs" />
     <Compile Include="Constants.cs" />

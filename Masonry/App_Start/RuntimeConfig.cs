@@ -16,35 +16,17 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
+using Masonry.Core.Composition;
+using Masonry.Extensibility;
 
 namespace Masonry
 {
-  // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-  // visit http://go.microsoft.com/?LinkId=9394801
-
-  public class MvcApplication : HttpApplication
+  public class RuntimeConfig
   {
-    protected void Application_Start()
+    public static void Register()
     {
-      AreaRegistration.RegisterAllAreas();
-
-      //WebApiConfig.Register(GlobalConfiguration.Configuration);
-      FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-      RouteConfig.RegisterRoutes(RouteTable.Routes);
-      //BundleConfig.RegisterBundles(BundleTable.Bundles);
-      AuthConfig.RegisterAuth();
-      RuntimeConfig.Register();
+      CompositionProvider.AddAssembly(typeof(RuntimeConfig).Assembly);
+      CompositionProvider.AddAssembly(typeof(IActionVerb).Assembly);
     }
-
-    // Alternatively can be configured within web.config: http://msdn.microsoft.com/en-us/library/bb763179.aspx
-    //void Application_BeginRequest()
-    //{
-    //  // Basic click jacking protection
-    //  HttpContext.Current.Response.AddHeader("X-Frame-Options", "DENY");
-    //}
   }
 }
