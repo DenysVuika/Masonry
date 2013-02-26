@@ -174,6 +174,7 @@ function FeedViewModel(account, data) {
     if (post.Comments && post.Comments.length > 0) {
       $(post.Comments).each(function (index, entry) {
         viewmodel.comments.push(new PostViewModel({
+          Id: entry.Id,
           Account: entry.Account,
           Name: entry.Name,
           Content: entry.Content,
@@ -199,6 +200,7 @@ function FeedViewModel(account, data) {
 
 function UserProfileViewModel(data) {
   var self = this;
+  self.id = data.Id;
   self.account = data.Account;
   self.name = data.Name;
   self.website = data.Website;
@@ -302,6 +304,7 @@ function onCommentsLoaded(post, data) {
     // turn comments into PostViewModel instances (as per current design)
     $(data).each(function(index, entry) {
       post.comments.push(new PostViewModel({
+        Id: entry.Id,
         Account: entry.Account,
         Name: entry.Name,
         Content: entry.Content,
@@ -315,13 +318,14 @@ function onCommentsLoaded(post, data) {
   }
 }
 
-function onCommentPosted(data, status, response) {
+function onCommentPosted(data) {
   var editor = $("#comment-box-" + data.PostId);
   var post = ko.dataFor(editor[0]);
 
   post.commentsCount(post.commentsCount() + 1);
   // turn comments into PostViewModel instances (as per current design)
   post.comments.push(new PostViewModel({
+    Id: data.Id,
     Account: data.Account,
     Name: data.Name,
     Content: data.Content,
@@ -454,7 +458,7 @@ function initLazyLoading(url, onSuccess) {
           dataType: "json",
           url: url(_page),
           timeout: 5000,
-          success: function (data, textStatus) {
+          success: function (data) {
             // check whether any posts are loaded
             if (data.length > 0) {
               if (onSuccess && (typeof onSuccess == "function")) {
@@ -466,12 +470,12 @@ function initLazyLoading(url, onSuccess) {
               _page = -1;
             }
           },
-          error: function (request, status, error) {
+          error: function () {
             $("#content-loading-error").text("Error getting data. There seems to be a server problem, please try again later.");
             $("#content-loading-error").show();
             _page--;
           },
-          complete: function (request, status) {
+          complete: function () {
             _inCallback = false;
             $("#page-data-loading").hide();
           }

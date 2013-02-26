@@ -1,7 +1,7 @@
 ﻿<script type="text/html" id="post-comment-template">
   <div>
     <a class="timelineImageContainer">      
-      <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'cprof_' + $index(), 'data-link-value': account , src: picture }"/>
+      <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'cprof_' + id, 'data-link-value': account , src: picture }"/>
     </a>
     <div class="timelineContentBlock" style="padding-bottom: 3px">
       <blockquote class="post-comment">
@@ -56,13 +56,13 @@
         <button class="close" data-bind="visible: canDismiss, click: $parent.removePost">&times;</button>
         <!-- Profile Picture -->
         <a class="timelineImageContainer">
-          <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'prof_' + $index(), 'data-link-value': account , src: picture }"/>
+          <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'prof_' + id, 'data-link-value': account , src: picture }"/>
         </a>
         <div class="timelineContentBlock">
           <!-- header -->
           <div class="timelineMessageHeader">
             <span>              
-              <a data-bind="attr: { href: feed }"><strong data-bind="text: name"></strong></a>
+              <a data-bind="attr: { href: postUrl }"><strong data-bind="  text: name"></strong></a>
               <a data-bind="text: '@@' + account, attr: { href: feed }" style="color: grey; font-weight: normal; font-size: 90%"></a>
             </span>
           </div>
