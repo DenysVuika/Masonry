@@ -271,16 +271,24 @@ function enableCommentExpanders() {
   $('div[data-link-type="comment"]').each(function () {
     var link = $(this);
     link
-      .unbind("shown", onCommentsExpanded)
-      .bind("shown", onCommentsExpanded);
+      .unbind("show", onCommentsExpanded)
+      //.unbind("hide", onCommentsCollapsed)
+      .bind("show", onCommentsExpanded);
+      //.bind("hide", onCommentsCollapsed);
   });
 }
 
 function onCommentsExpanded() {
   var sender = $(this);
+  //sender.css('overflow', 'visible');
   var post = ko.dataFor(sender[0]);
   loadComments(post);
 }
+
+//function onCommentsCollapsed() {
+//  var sender = $(this);
+//  sender.css('overflow', 'collapsed');
+//}
 
 function loadComments(post) {
   if (!post.commentsLoading()) {
@@ -355,10 +363,6 @@ function enableAccountPopups() {
     .unbind("click touchend", onAccountPopupClickedAway)
     .bind("click touchend", onAccountPopupClickedAway);
 
-  //var elements = (!target)
-  //  ? $("img[data-link-type='account']")
-  //  : $(target).find("img[data-link-type='account']");
-
   var elements = $("img[data-link-type='account']");
 
   elements.each(function () {
@@ -367,8 +371,13 @@ function enableAccountPopups() {
     var imgId = img.attr("id");
     img.popover({
       html: true,
-      title: function () { return $("#" + imgId).attr("data-link-value"); },
-      content: function () { return $(this).data("data-popover-data").html; },
+      title: function() {
+         return $("#" + imgId).attr("data-link-value");
+      },
+      content: function() {
+        return $(this).data("data-popover-data").html;
+      },
+      container: 'body',
       trigger: 'manual'
     }).unbind("click touchend", onAccountPopupClick)
       .bind("click touchend", onAccountPopupClick);
@@ -419,7 +428,9 @@ function onUserProfileFetched(senderId, data, profile) {
 
   // this is async invoke so we need to ensure that this particular popup is still opened
   if (openedPopup == senderId) {
-    $('#' + senderId).popover('show'); // rebind opened view
+    var sender = $('#' + senderId);
+    sender.data("data-popover-data", profile);
+    sender.popover('show'); // rebind opened view
   }
 }
 

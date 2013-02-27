@@ -198,12 +198,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\forkme_right_orange.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\grid-18px-masked.png" />
     <Content Include="Content\images\icon-settings.png" />
     <Content Include="Content\images\masonry.gif" />
     <Content Include="Content\images\facebook-loading.gif" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\profile_sample.png" />
     <Content Include="Content\images\progress-circle.gif" />
     <Content Include="Content\images\profile_undefined.png" />

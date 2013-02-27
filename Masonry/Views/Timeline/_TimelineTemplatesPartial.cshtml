@@ -1,20 +1,70 @@
-﻿<script type="text/html" id="post-comment-template">
+﻿<script type="text/html" id="timeline-template">
+  <ul class="media-list" data-bind="foreach: posts">
+    <li class="media" style="border-top: solid 1px lightgrey; padding-top: 15px;">
+      <button class="close" data-bind="visible: canDismiss, click: $parent.removePost">&times;</button>
+      <a class="pull-left" href="#">
+        <img class="media-object user-profile-icon" data-link-type="account" data-bind="attr: { id: 'prof_' + id, 'data-link-value': account, src: picture }"/>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <span>
+            <a data-bind="attr: { href: postUrl }">
+              <strong data-bind="text: name"></strong>
+            </a>
+            <a data-bind="text: '@@' + account, attr: { href: feed }" style="color: grey; font-weight: normal; font-size: 90%; padding-left: 5px;"></a>
+          </span>
+        </h4>
+        <blockquote>
+          <p data-bind="html: content"></p>
+          <small data-bind="text: created.calendar(), attr: { title : created.format('LLLL') }"></small>
+        </blockquote>
+        <div data-bind="visible: hashtags.length > 0">
+          <i class="icon-tags"></i>
+          <span data-bind="foreach: hashtags">
+            <span class="label" data-bind="text: $data" style="margin-left: 2px;"></span>
+          </span>
+        </div>
+        <!-- ko if: openBlank -->
+        <div data-bind="template: { name: 'view-all-comments-template' }"></div>
+        <!-- /ko -->
+        <!-- ko ifnot: openBlank -->
+        <div data-bind="template: { name: 'comments-section-template' }"></div>
+        <!-- /ko -->
+      </div>
+    </li>
+  </ul>
+</script>
+
+<script type="text/html" id="comments-section-template">  
   <div>
-    <a class="timelineImageContainer">      
-      <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'cprof_' + id, 'data-link-value': account , src: picture }"/>
+    <a data-toggle="collapse" data-bind="attr: { 'data-target' : '#comments_' + id }" style="cursor:pointer;">
+      <i class="icon-comment"></i>&nbsp;@Strings.Comments
+      <span data-bind="visible: commentsCount() > 0, text: '(' + commentsCount() + ')'"></span>
     </a>
-    <div class="timelineContentBlock" style="padding-bottom: 3px">
+  </div>
+  <div data-link-type="comment" class="collapse" data-bind="attr: { id: 'comments_' + id }" style="margin-top: 10px">
+    <ul class="media-list" data-bind="visible: comments().length > 0, template: { name: 'post-comment-template', foreach: comments }"></ul>
+    <div data-bind="template: { name: 'post-commentbox-template' }"></div>
+  </div>
+</script>
+
+<script type="text/html" id="post-comment-template">
+  <li class="media" style="margin-top: 0; margin-bottom: 0;">
+    <a class="pull-left" href="#">
+      <img class="media-object user-profile-icon" data-link-type="account" data-bind="attr: { id: 'cprof_' + id, 'data-link-value': account, src: picture }"/>
+    </a>
+    <div class="media-body">
       <blockquote class="post-comment">
         <p>
           <a data-bind="attr: { href: feed }">
             <strong data-bind="text: name"></strong>
           </a>
-          <span data-bind="html: content"></span>      
+          <span data-bind="html: content" style="margin-left: 5px;"></span>
         </p>
-        <small data-bind="text: created.calendar(), attr: { title: created.format('LLLL') }"></small>
+        <small data-bind="text: created.calendar(), attr: { title : created.format('LLLL') }"></small>
       </blockquote>
     </div>
-  </div>
+  </li>
 </script>
 
 <script type="text/html" id="post-commentbox-template">
@@ -31,62 +81,4 @@
       <i class="icon-comment"></i><span data-bind="text: ' ' + '@Strings.ViewAllXComments'.formatString(commentsCount())"></span>
     </a>
   </div>
-</script>
-
-<script type="text/html" id="comments-section-template">  
-  <div>
-    <a data-toggle="collapse" data-bind="attr: { 'data-target' : '#comments_' + id }">
-      <i class="icon-comment"></i>&nbsp;@Strings.Comments
-      <span data-bind="visible: commentsCount() > 0, text: '(' + commentsCount() + ')'"></span>
-    </a>
-  </div>
-  <div data-link-type="comment" class="collapse" data-bind="attr: { id: 'comments_' + id }" style="margin-top: 10px">
-    <!-- comment list -->
-    <div data-bind="visible: comments().length > 0, template: { name: 'post-comment-template', foreach: comments }"></div>
-    <!-- comment box -->
-    <div data-bind="template: { name: 'post-commentbox-template' }"></div>
-  </div>
-</script>
-
-<script type="text/html" id="timeline-template">
-  <ul class="m_stream" data-bind="foreach: posts">
-    <li class="timelineItem allowTopBorder">
-      <!-- Entry content -->
-      <div>        
-        <button class="close" data-bind="visible: canDismiss, click: $parent.removePost">&times;</button>
-        <!-- Profile Picture -->
-        <a class="timelineImageContainer">
-          <img class="user-profile-icon" data-link-type="account" data-bind="attr: { id: 'prof_' + id, 'data-link-value': account , src: picture }"/>
-        </a>
-        <div class="timelineContentBlock">
-          <!-- header -->
-          <div class="timelineMessageHeader">
-            <span>              
-              <a data-bind="attr: { href: postUrl }"><strong data-bind="  text: name"></strong></a>
-              <a data-bind="text: '@@' + account, attr: { href: feed }" style="color: grey; font-weight: normal; font-size: 90%"></a>
-            </span>
-          </div>
-          <!-- body -->
-          <blockquote>
-            <p data-bind="html: content"></p>
-            <small data-bind="text: created.calendar(), attr: { title : created.format('LLLL') }"></small>
-          </blockquote>
-          <!-- hash tags -->
-          <div data-bind="visible: hashtags.length > 0">
-            <i class="icon-tags"></i>
-            <span data-bind="foreach: hashtags">
-              <span class="label" data-bind="text: $data"></span>
-            </span>
-          </div>
-          <!-- user comments -->
-          <!-- ko if: openBlank -->
-          <div data-bind="template: { name: 'view-all-comments-template' }"></div>
-          <!-- /ko -->
-          <!-- ko ifnot: openBlank -->
-          <div data-bind="template: { name: 'comments-section-template' }"></div>
-          <!-- /ko -->
-        </div>
-      </div>
-    </li>
-  </ul>
 </script>

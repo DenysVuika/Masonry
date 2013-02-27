@@ -43,7 +43,7 @@
           @Html.Partial("_NavPartial")
 
           <!-- Search box -->
-          @using (Html.BeginForm("Index", "Search", new { area = "" }, FormMethod.Post, new { @class = "navbar-search pull-right" }))
+          @*@using (Html.BeginForm("Index", "Search", new { area = "" }, FormMethod.Post, new { @class = "navbar-search pull-right" }))
           {
             <div class="input-append">
               <input type="text" class="span2" name="q" id="q" placeholder="@Strings.SearchPrompt" />
@@ -51,7 +51,7 @@
                 <i class="icon-search"></i>
               </button>
             </div>
-          }
+          }*@
         </div>
 
       </div>
@@ -103,7 +103,7 @@
   
   <script type="text/javascript">
 
-    function onStatusUpdated(data, status, response) {
+    function onStatusUpdated(data) {
       // TODO: error checks
       $("#new-post-dialog").val("");
       $("#post-status-update").modal("hide");

@@ -38,7 +38,7 @@
 
 <script type="text/javascript">
   
-  function onStatusUpdatedInline(data, status, response) {
+  function onStatusUpdatedInline(data) {
     // TODO: error checks
     $("#new-post-dialog-inline").val("");
     // Raise status updated event to notify external components
@@ -98,9 +98,9 @@
       window.timelineFeed.appendPosts(data);
     }
     
-    enableAccountTooltips();
-    enableAccountPopups();
     enableCommentExpanders();
+    enableAccountPopups();
+    enableAccountTooltips();
     $(".m-stream-container").show();
 
     checkNewPosts();
@@ -149,7 +149,9 @@
         window.timelineFeed.addNewPost(post);
       });
       // TODO: temp
+      enableCommentExpanders();
       enableAccountPopups();
+      enableAccountTooltips();
     }
   }
 
