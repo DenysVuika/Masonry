@@ -1,5 +1,5 @@
 ﻿@{
-  ViewBag.Title = "Masonry";
+  ViewBag.Title = ViewBag.Brand;
   ViewBag.Message = "Bootstrap Standard Layout";
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -71,7 +71,7 @@
 
 <header class="jumbotron masthead">
   <div>
-    <h1>Masonry<small style="vertical-align: top">beta</small></h1>
+    <h1>@ViewBag.Brand<small style="vertical-align: top">beta</small></h1>
     <p>Starter kit for modern, extensible and social-enabled web applications.</p>
   </div>
   <p>

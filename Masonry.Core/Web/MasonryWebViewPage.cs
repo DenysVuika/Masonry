@@ -17,6 +17,7 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace Masonry.Core.Web
@@ -34,6 +35,17 @@ namespace Masonry.Core.Web
     public override void Execute()
     {
       // do nothing
+    }
+
+    protected override void SetViewData(ViewDataDictionary viewData)
+    {
+      if (!viewData.ContainsKey("Brand"))
+        viewData["Brand"] = ConfigurationManager.AppSettings["masonry.config.ui.brand"];
+
+      if (!viewData.ContainsKey("Copyright"))
+        viewData["Copyright"] = ConfigurationManager.AppSettings["masonry.config.ui.copyright"];
+
+      base.SetViewData(viewData);
     }
 
     public override void InitHelpers()

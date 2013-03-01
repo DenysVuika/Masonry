@@ -22,7 +22,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="@Url.Content("~/")">Masonry</a>
+        <a class="brand" href="@Url.Content("~/")">@ViewBag.Brand</a>
         @Html.Partial("_LogOnPartial")
 
         <div class="nav-collapse">
@@ -57,7 +57,7 @@
 
     <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2012 Denys Vuika</p>
+      <p>&copy; @ViewBag.Copyright</p>
     </footer>
 
   </div>

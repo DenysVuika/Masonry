@@ -23,7 +23,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="@Url.Content("~/")">Masonry</a>
+        <a class="brand" href="@Url.Content("~/")">@ViewBag.Brand</a>
         
         @* Post status update (button) *@
         <ul class="nav pull-right">
@@ -72,7 +72,7 @@
 
     <footer>
       <p class="pull-right"><a href="#">@Strings.BackToTop</a></p>
-      <p>&copy; 2012 Denys Vuika</p>
+      <p>&copy; @ViewBag.Copyright</p>
     </footer>
 
   </div>
